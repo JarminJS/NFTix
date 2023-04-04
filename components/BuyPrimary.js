@@ -24,12 +24,15 @@ export function BuyPrimary({ contract }) {
   const [hasMounted, setHasMounted] = useState();
   const [quantity, setQuantity] = useState(1);
   const gweiToEth = 1000000000000000000;
+  var ticketPrice;
   let slug;
 
   if (contract == "0x3978398d6485c07bf0f4a95ef8e4678b747e56b6") {
     slug = "jbga";
+    ticketPrice = 0.05;
   } else if (contract == "0x52cf0f17db253195d1deda70b31c1485b6ee28b1") {
     slug = "jbvip";
+    ticketPrice = 0.1;
   }
 
   // console.log(contract === "0x3978398d6485c07bf0f4a95ef8e4678b747e56b6");
@@ -48,12 +51,12 @@ export function BuyPrimary({ contract }) {
   //   // console.log(newPrice);
   // }, [quantity, newPrice]);
 
-  const { data: price } = useContractRead({
-    ...contractConfig,
-    functionName: "TICKET_PRICE",
-  });
+  // const { data: price } = useContractRead({
+  //   ...contractConfig,
+  //   functionName: "TICKET_PRICE",
+  // });
 
-  const ticketPrice = parseFloat(price.toString() / gweiToEth).toFixed(2);
+  // const ticketPrice = parseFloat(price.toString() / gweiToEth).toFixed(2);
 
   let { config } = usePrepareContractWrite({
     ...contractConfig,
