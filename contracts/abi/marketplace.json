@@ -1,0 +1,245 @@
+[
+    {
+        "inputs": [],
+        "name": "ListingNotFound",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "NoAskingPrice",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "NotOwned",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "OwnedListing",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "Unauthorized",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "WrongValueSent",
+        "type": "error"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "buyer",
+                "type": "address"
+            },
+            {
+                "components": [
+                    {
+                        "internalType": "contract ERC721",
+                        "name": "tokenContract",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "creator",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "askPrice",
+                        "type": "uint256"
+                    }
+                ],
+                "indexed": false,
+                "internalType": "struct Marketplace.Listing",
+                "name": "listing",
+                "type": "tuple"
+            }
+        ],
+        "name": "ListingBought",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "contract ERC721",
+                        "name": "tokenContract",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "creator",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "askPrice",
+                        "type": "uint256"
+                    }
+                ],
+                "indexed": false,
+                "internalType": "struct Marketplace.Listing",
+                "name": "listing",
+                "type": "tuple"
+            }
+        ],
+        "name": "ListingRemoved",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "contract ERC721",
+                        "name": "tokenContract",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "creator",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "askPrice",
+                        "type": "uint256"
+                    }
+                ],
+                "indexed": false,
+                "internalType": "struct Marketplace.Listing",
+                "name": "listing",
+                "type": "tuple"
+            }
+        ],
+        "name": "NewListing",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "listingId",
+                "type": "uint256"
+            }
+        ],
+        "name": "buySecondary",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "listingId",
+                "type": "uint256"
+            }
+        ],
+        "name": "delist",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "getListing",
+        "outputs": [
+            {
+                "internalType": "contract ERC721",
+                "name": "tokenContract",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "creator",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "askPrice",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "contract ERC721",
+                "name": "tokenContract",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "askPrice",
+                "type": "uint256"
+            }
+        ],
+        "name": "list",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "saleCounter",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
