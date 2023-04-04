@@ -22,13 +22,14 @@ function marketplace() {
     functionName: "saleCounter",
   });
   counter = parseInt(counter);
+  console.log(counter);
 
-  var i = 0,
+  var i = 1,
     j = 0,
     hexNum,
     listing = [];
 
-  while (i < counter) {
+  while (i < counter - 1) {
     hexNum = i.toString(16);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { data: listed } = useContractRead({
@@ -39,7 +40,6 @@ function marketplace() {
 
     if (listed && listed[0] == "0x3978398d6485c07BF0f4A95Ef8E4678B747E56b6") {
       listing[j] = listed;
-      // listed.name = "";
       j++;
     }
 
