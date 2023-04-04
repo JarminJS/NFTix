@@ -21,8 +21,8 @@ const { chains } = configureChains(
 export function BuyPrimary({ contract }) {
   const [addressOwn, setAddressOwn] = useState();
   const { address, isConnected } = useAccount();
-  const [hasMounted, setHasMounted] = useState(false);
-  const [quantity, setQuantity] = useState(0);
+  const [hasMounted, setHasMounted] = useState();
+  const [quantity, setQuantity] = useState(1);
   const gweiToEth = 1000000000000000000;
   let slug;
 
@@ -53,8 +53,7 @@ export function BuyPrimary({ contract }) {
     functionName: "TICKET_PRICE",
   });
 
-  const ticketPrice =
-    price && parseFloat(price.toString() / gweiToEth).toFixed(2);
+  const ticketPrice = parseFloat(price.toString() / gweiToEth).toFixed(2);
 
   let { config } = usePrepareContractWrite({
     ...contractConfig,
