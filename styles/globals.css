@@ -20,7 +20,7 @@
 tr,
 th,
 td {
-  @apply py-2 bg-transparent border-none;
+  @apply py-2 px-2 bg-transparent border-none;
 }
 
 .ticket {

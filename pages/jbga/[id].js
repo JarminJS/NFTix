@@ -206,17 +206,20 @@ export default function Ticket(data) {
             <table className="w-full">
               <thead>
                 <tr className="text-left ">
-                  <th className="w-1/5">Event</th>
-                  <th className="w-1/5">Transaction Hash</th>
-                  <th className="w-1/5">From</th>
-                  <th className="w-1/5">To</th>
-                  <th className="w-1/5">Value</th>
+                  <th className="w-fit">Event</th>
+                  <th className="">Transaction</th>
+                  <th className="">From</th>
+                  <th className="">To</th>
+                  <th className="">Value</th>
                 </tr>
               </thead>
               <tbody>
                 {transfer.map((log) => (
-                  <tr key={log.transaction_hash} className="hover:bg-slate-50">
-                    <td>
+                  <tr
+                    key={log.transaction_hash}
+                    className="hover:bg-slate-50 truncate"
+                  >
+                    <td className="">
                       {log.from_address ==
                         "0x0000000000000000000000000000000000000000" &&
                         "Buy Primary"}
@@ -242,14 +245,24 @@ export default function Ticket(data) {
                       </Link>
                     </td>
                     <td className="">
-                      {log.from_address.slice(0, 4) +
-                        "..." +
-                        log.from_address.slice(-4)}{" "}
+                      <Link
+                        href={`account/${log.from_address}`}
+                        className="hover:underline"
+                      >
+                        {log.from_address.slice(0, 4) +
+                          "..." +
+                          log.from_address.slice(-4)}{" "}
+                      </Link>
                     </td>
                     <td className="">
-                      {log.to_address.slice(0, 4) +
-                        "..." +
-                        log.to_address.slice(-4)}
+                      <Link
+                        href={`account/${log.to_address}`}
+                        className="hover:underline"
+                      >
+                        {log.to_address.slice(0, 4) +
+                          "..." +
+                          log.to_address.slice(-4)}
+                      </Link>
                     </td>
                     <td className="">{log.value / gweiToEth} ETH</td>
                   </tr>
