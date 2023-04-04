@@ -281,7 +281,9 @@ export async function getServerSideProps({ params }) {
     let response = await alchemy.nft.getNftMetadata(contract, params.id);
     // console.log(response);
 
-    const res = await fetch(`http://localhost:3000/api/transfer/${params.id}`);
+    const res = await fetch(
+      `https://nf-tix.vercel.app/api/transfer/${params.id}`
+    );
     const trans = await res.json();
 
     if (!trans) {
