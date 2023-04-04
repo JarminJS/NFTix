@@ -129,9 +129,9 @@ export default function Mint(data) {
               </div>
               <div className="w-full rounded-lg border-slate-200 border-2 shadow-md p-4">
                 <div className="text-lg mb-2">VIP Experience Ticket</div>
-                {/* <BuyPrimary
+                <BuyPrimary
                   contract={"0x52Cf0f17dB253195d1DEDA70b31c1485B6Ee28B1"}
-                /> */}
+                />
               </div>
             </div>
           </div>
