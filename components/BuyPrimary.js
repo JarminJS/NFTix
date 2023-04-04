@@ -61,7 +61,7 @@ export function BuyPrimary({ contract }) {
     args: [address, quantity],
     overrides: {
       value: ethers.utils.parseEther(
-        (ticketPrice * quantity).toFixed(2)?.toString()
+        (ticketPrice * quantity).toFixed(2).toString()
       ),
     },
     gasLimit: 50000000000,
