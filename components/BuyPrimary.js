@@ -53,7 +53,7 @@ export function BuyPrimary({ contract }) {
     functionName: "TICKET_PRICE",
   });
 
-  const ticketPrice = parseFloat(price?.toString() / gweiToEth).toFixed(2);
+  const ticketPrice = parseFloat(price.toString() / gweiToEth).toFixed(2);
 
   let { config } = usePrepareContractWrite({
     ...contractConfig,
