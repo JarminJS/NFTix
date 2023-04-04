@@ -1,15 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { React, useState, useEffect } from "react";
-import { useAccount, useContractRead } from "wagmi";
 import {
   usePrepareContractWrite,
   useContractWrite,
   useWaitForTransaction,
 } from "wagmi";
 import marketplaceAbi from "../contracts/abi/marketplace.json";
-import { configureChains, goerli } from "wagmi";
-import { alchemyProvider } from "wagmi/providers/alchemy";
 
 export function BuySecondaryButton({ listingId, price }) {
   const marketplaceAdd = "0x402a478f22da7d85006ab6ce9edff896a4905d00";
