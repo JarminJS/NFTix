@@ -112,7 +112,9 @@ export async function getServerSideProps({ params }) {
   const flag = ethers.utils.isAddress(params.address);
   var res;
   if (flag) {
-    res = await fetch(`http://localhost:3000/api/account/${params.address}`);
+    res = await fetch(
+      `https://nf-tix.vercel.app/api/account/${params.address}`
+    );
     res = await res.json();
   } else {
     res = null;

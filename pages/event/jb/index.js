@@ -58,6 +58,7 @@ export default function jb(data) {
   if (!hasMounted) return null;
 
   const content = data.data[0];
+  console.log();
   const tickets = content.ticket;
   const tnc = content.tnc;
 
@@ -71,7 +72,7 @@ export default function jb(data) {
       <Head>
         <title>{content.name}</title>
       </Head>
-      <div className="font-sans bg-slate-50 min-h-screen min-w-screen text-black">
+      <div className="font-sans bg-slate-50 min-h-screen min-w-screen text-black text-sm sm:text-base">
         <Nav />
 
         <div className=" flex flex-col md:w-2/3 mx-auto gap-6 mt-8 ">
