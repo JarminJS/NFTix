@@ -30,7 +30,7 @@ export function BuyPrimary({ contract }) {
   if (contract == "0x3978398d6485c07bf0f4a95ef8e4678b747e56b6") {
     slug = "jbga";
     ticketPrice = 0.05;
-  } else if (contract == "0x52cf0f17db253195d1deda70b31c1485b6ee28b1") {
+  } else if (contract == "0x52Cf0f17dB253195d1DEDA70b31c1485B6Ee28B1") {
     slug = "jbvip";
     ticketPrice = 0.1;
   }
