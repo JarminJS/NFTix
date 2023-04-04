@@ -51,9 +51,9 @@ export default function Mint(data) {
     setHasMounted(true);
   }, []);
 
-  useEffect(() => {
-    console.log(ticketType);
-  }, [ticketType]);
+  // useEffect(() => {
+  //   console.log(ticketType);
+  // }, [ticketType]);
 
   if (!hasMounted) return null;
 
@@ -63,7 +63,7 @@ export default function Mint(data) {
     month[rawdate.getMonth()]
   } ${rawdate.getFullYear()}`;
 
-  console.log(content);
+  // console.log(content);
 
   return (
     <>
