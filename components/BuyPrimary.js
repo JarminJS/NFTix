@@ -53,7 +53,7 @@ export function BuyPrimary({ contract }) {
     functionName: "TICKET_PRICE",
   });
 
-  const ticketPrice = parseFloat(price.toString() / gweiToEth).toFixed(2);
+  const ticketPrice = parseFloat(price?.toString() / gweiToEth).toFixed(2);
 
   let { config } = usePrepareContractWrite({
     ...contractConfig,
@@ -61,7 +61,7 @@ export function BuyPrimary({ contract }) {
     args: [address, quantity],
     overrides: {
       value: ethers.utils.parseEther(
-        (ticketPrice * quantity).toFixed(2).toString()
+        (ticketPrice * quantity).toFixed(2)?.toString()
       ),
     },
     gasLimit: 50000000000,
@@ -89,7 +89,7 @@ export function BuyPrimary({ contract }) {
     args: [address?.toString()],
   });
 
-  var left = limitPerPerson?.toString() - (owned ? owned.toString() : 0);
+  var left = limitPerPerson?.toString() - (owned ? owned?.toString() : 0);
 
   const options = [];
 
