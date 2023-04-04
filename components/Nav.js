@@ -43,7 +43,7 @@ function Nav() {
               </Link>
             </li>
             <li>
-              <Link className="nav-item" href="/">
+              <Link className="nav-item" href="/authenticate">
                 Authenticate
               </Link>
             </li>

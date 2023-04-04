@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import { React, useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { React, useState, useEffect } from "react";
 import { useAccount, useContractRead, useConnect } from "wagmi";
 import {
   usePrepareContractWrite,
@@ -20,9 +19,10 @@ const { chains } = configureChains(
 );
 
 export function BuyPrimary({ contract }) {
-  const router = useRouter();
   const [addressOwn, setAddressOwn] = useState();
   const { address, isConnected } = useAccount();
+  const [hasMounted, setHasMounted] = useState(false);
+  const [quantity, setQuantity] = useState(0);
   const gweiToEth = 1000000000000000000;
   let slug;
 
@@ -38,19 +38,15 @@ export function BuyPrimary({ contract }) {
     address: contract,
     abi: abi,
   };
-  const [hasMounted, setHasMounted] = useState(false);
-
-  const [quantity, setQuantity] = useState(0);
-  const [newPrice, setNewPrice] = useState(0);
 
   useEffect(() => {
     setHasMounted(true);
   });
 
-  useEffect(() => {
-    // console.log(quantity);
-    // console.log(newPrice);
-  }, [quantity, newPrice]);
+  // useEffect(() => {
+  //   // console.log(quantity);
+  //   // console.log(newPrice);
+  // }, [quantity, newPrice]);
 
   const { data: price } = useContractRead({
     ...contractConfig,
@@ -153,7 +149,6 @@ export function BuyPrimary({ contract }) {
                   value={quantity}
                   onChange={(e) => {
                     setQuantity(e.target.value);
-                    setNewPrice(e.target.value * price);
                   }}
                 >
                   {options.map((option) => {
