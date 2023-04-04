@@ -3,8 +3,6 @@ import Image from "next/image";
 import Head from "next/head";
 import Nav from "../../components/Nav";
 import clientPromise from "../../lib/mongodb";
-import { BuyPrimary } from "../../components/BuyPrimaryButton";
-import Stats from "../../components/Stats";
 
 export async function getServerSideProps() {
   try {
