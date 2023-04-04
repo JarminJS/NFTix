@@ -29,7 +29,7 @@ function marketplace() {
     hexNum,
     listing = [];
 
-  while (i < counter - 1) {
+  while (i < counter) {
     hexNum = i.toString(16);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { data: listed } = useContractRead({
