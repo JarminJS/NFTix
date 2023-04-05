@@ -21,7 +21,7 @@ export default function EventList(data) {
                 height={600}
                 priority
               />
-              <div className="mx-2 sm:w-10/12 inline-block min-w-0">
+              <div className="mx-2 sm:mx-3 mt-2 sm:w-10/12 min-w-0 flex flex-col gap-y-2 ">
                 <div className="badge badge-primary rounded-md badge-sm p-2">
                   {event.tag}
                 </div>
@@ -37,7 +37,7 @@ export default function EventList(data) {
 
                 <div>
                   <div className="subtitle">Date: </div>
-                  <div className="main truncate">{event.date}</div>
+                  <div className="main">{event.date}</div>
                 </div>
 
                 <div>

@@ -4,6 +4,35 @@ import Nav from "../components/Nav";
 import EventList from "../components/EventList";
 
 export default function Events({ events }) {
+  const month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  for (let i = 0; i < events.length; i++) {
+    // console.log(data[i].date);
+
+    const rawdate = new Date(events[i].date);
+    // console.log(rawdate);
+    const d = rawdate.getDate();
+    const m = month[rawdate.getMonth()];
+    const y = rawdate.getFullYear();
+
+    events[i].date = d + " " + m + " " + y;
+
+    // console.log(featured, expo, concert, run);
+  }
+
   return (
     <>
       <Head>
