@@ -32,5 +32,5 @@ td {
 }
 
 .main {
-  @apply text-base;
+  @apply text-base line-clamp-1;
 }

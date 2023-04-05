@@ -91,6 +91,7 @@ export default function Home({ isDbConnected, data }) {
       <div className="flex flex-col bg-neutral-50 min-h-screen min-w-fit pb-8">
         <Nav />
         <div className="flex flex-col md:w-2/3 md:mx-auto gap-6">
+          {/* Image Carousel */}
           <div className="carousel md:w-2/3  mx-auto">
             <div id="slide1" className="carousel-item relative w-full">
               <Image

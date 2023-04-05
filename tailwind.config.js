@@ -30,6 +30,7 @@ module.exports = {
     require("daisyui"),
     require("@tailwindcss/forms"),
     require("tailwindcss-animate"),
+    require("@tailwindcss/line-clamp"),
   ],
   daisyui: {
     themes: ["light"],
