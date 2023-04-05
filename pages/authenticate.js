@@ -40,7 +40,7 @@ export default function Authenticate() {
       reply = null;
     }
 
-    if (reply.tokenUri == null) {
+    if (reply && reply.tokenUri == null) {
       reply = null;
     }
 
@@ -82,7 +82,7 @@ export default function Authenticate() {
             <input
               type="number"
               placeholder="Token ID"
-              className="input w-1/2"
+              className="input w-1/2 border-1 border-slate-300"
               min={1}
               onChange={(e) => {
                 setTokenId(e.target.value);
@@ -104,7 +104,7 @@ export default function Authenticate() {
 
         {response != null && (
           <>
-            <div className="md:w-1/3 w-full rounded-xl text-black bg-transparent border-slate-200 border-2 shadow-md flex-1 flex-col mt-4 mx-auto mb-8">
+            <div className="md:w-1/4 w-full rounded-xl text-black bg-transparent border-slate-200 border-2 shadow-md flex-1 flex-col mt-4 mx-auto mb-8">
               <Image
                 src={
                   response.contract.address ==
