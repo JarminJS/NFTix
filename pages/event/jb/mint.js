@@ -60,11 +60,11 @@ export default function Mint({ data, price }) {
 
   if (!hasMounted) return null;
 
-  console.log(data);
+  // console.log(data);
 
   const content = data[0];
 
-  console.log(content);
+  // console.log(content);
 
   const rawdate = new Date(content.date);
   const date = `${rawdate.getDate()} ${

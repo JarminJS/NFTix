@@ -22,7 +22,7 @@ export function BuyPrimary({ contract, price }) {
   const [addressOwn, setAddressOwn] = useState();
   const { address, isConnected } = useAccount();
   const [hasMounted, setHasMounted] = useState();
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const gweiToEth = 1000000000000000000;
   var ticketPrice;
   let slug;
