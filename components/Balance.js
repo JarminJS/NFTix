@@ -11,7 +11,7 @@ function Balance() {
 
   useEffect(() => {
     setHasMounted(true);
-  });
+  }, []);
 
   return <div className="font-semibold">{data.formatted.slice(0, 5)} ETH</div>;
 }
