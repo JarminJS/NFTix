@@ -59,6 +59,9 @@ export default function Mint({ data, price }) {
   if (!hasMounted) return null;
 
   const content = data[0];
+
+  console.log(content);
+
   const rawdate = new Date(content.date);
   const date = `${rawdate.getDate()} ${
     month[rawdate.getMonth()]
@@ -104,10 +107,6 @@ export default function Mint({ data, price }) {
                     <tr>
                       <td>Time: </td>
                       <td>{rawdate.toLocaleTimeString()}</td>
-                    </tr>
-                    <tr>
-                      <td>Price: </td>
-                      <td>Starts from {content.ticket[0].price} ETH</td>
                     </tr>
                   </tbody>
                 </table>
