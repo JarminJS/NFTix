@@ -173,8 +173,12 @@ export function BuyPrimary({ contract, price }) {
             </form>
             <div className="btn-primary " onClick={() => write()}>
               Buy {quantity} Ticket for {(quantity * ticketPrice).toFixed(2)}{" "}
-              ETH ~ RM
-              {(quantity * ticketPrice * price).toFixed(2)}
+              ETH
+              {price ? (
+                <> ~ RM{(quantity * ticketPrice * price).toFixed(2)}</>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         )}
