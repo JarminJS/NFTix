@@ -13,7 +13,7 @@ import { DelistButton } from "../../components/DelistButton";
 import Head from "next/head";
 import { BuySecondaryButton } from "../../components/BuySecondary";
 
-export default function Ticket(data) {
+export default function Ticket({ data, transfer }) {
   const { address, isConnected } = useAccount();
   const router = useRouter();
   const { id } = router.query;
@@ -21,9 +21,9 @@ export default function Ticket(data) {
   const contractAddress = "0x52cf0f17db253195d1deda70b31c1485b6ee28b1";
   const marketplaceAdd = "0x402a478f22DA7D85006Ab6cE9eDfF896A4905D00";
   // console.log(data);
-  const metadata = data?.data;
+  const metadata = data;
   const gweiToEth = 1000000000000000000;
-  const transfer = data.transfer.result;
+  const trans = transfer.result;
   // console.log(transfer);
 
   var imgSrc,
@@ -147,7 +147,7 @@ export default function Ticket(data) {
                 </div>
                 <div className="flex flex-row gap-3">
                   <div>Owner: </div>
-                  <Link href={`account/${owner}`} className="hover:underline">
+                  <Link href={`/account/${owner}`} className="hover:underline">
                     {owner
                       ? owner.slice(0, 6) + "..." + owner.slice(-6)
                       : "0x000"}
@@ -214,7 +214,7 @@ export default function Ticket(data) {
                 </tr>
               </thead>
               <tbody>
-                {transfer.map((log) => (
+                {trans.map((log) => (
                   <tr
                     key={log.transaction_hash}
                     className="hover:bg-slate-50 truncate"

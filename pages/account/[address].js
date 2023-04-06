@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -20,6 +21,9 @@ export default function Account(data) {
 
   return (
     <>
+      <Head>
+        <title>Account - {address}</title>
+      </Head>
       <div className="flex flex-col bg-neutral-50 min-h-screen min-w-fit">
         <Nav />
 
@@ -48,7 +52,7 @@ export default function Account(data) {
                   // eslint-disable-next-line react/jsx-key
                   <Link
                     key={item.contract.address && item.tokenId}
-                    href={`${item.contract.address}/${item.tokenId}`}
+                    href={`/${item.contract.address}/${item.tokenId}`}
                     className="md:w-1/4 w-1/3 rounded-xl flex-auto text-black bg-transparent border-slate-200 border-2 shadow-md flex-row hover:border-blue-800 hover:scale-[1.01]"
                   >
                     <Image
