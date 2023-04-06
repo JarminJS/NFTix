@@ -36,5 +36,5 @@ td {
 }
 
 .main-container {
-  @apply bg-neutral-100 min-h-screen pb-8 text-sm sm:text-base;
+  @apply bg-neutral-200 min-h-screen pb-8 text-sm sm:text-base;
 }

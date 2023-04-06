@@ -38,13 +38,19 @@ function marketplace() {
       args: [hexNum],
     });
 
-    if (listed && listed[0] == "0x3978398d6485c07BF0f4A95Ef8E4678B747E56b6") {
+    if (
+      listed &&
+      (listed[0] == "0x3978398d6485c07BF0f4A95Ef8E4678B747E56b6" ||
+        listed[0] == "0x52Cf0f17dB253195d1DEDA70b31c1485B6Ee28B1")
+    ) {
       listing[j] = listed;
       j++;
     }
 
     i++;
   }
+
+  console.log(listing[0]);
 
   // console.log(listing);
 
@@ -74,9 +80,12 @@ function marketplace() {
                 >
                   <Image
                     src={
-                      item.tokenContract ==
+                      (item.tokenContract ==
                         "0x3978398d6485c07BF0f4A95Ef8E4678B747E56b6" &&
-                      "https://bafybeibnrasojyzexvr232dnuwyykw4v6mrjrcdn3sggjybfwcyenx7u34.ipfs.nftstorage.link/GA.png"
+                        "https://bafybeibnrasojyzexvr232dnuwyykw4v6mrjrcdn3sggjybfwcyenx7u34.ipfs.nftstorage.link/GA.png") ||
+                      (item.tokenContract ==
+                        "0x52Cf0f17dB253195d1DEDA70b31c1485B6Ee28B1" &&
+                        "https://bafybeibnrasojyzexvr232dnuwyykw4v6mrjrcdn3sggjybfwcyenx7u34.ipfs.nftstorage.link/VIP.png")
                     }
                     width={2000}
                     height={2000}
@@ -86,9 +95,12 @@ function marketplace() {
                   />
                   <div className="p-4 flex flex-col gap-2 text-sm">
                     <div className="font-bold">
-                      {item.tokenContract ==
+                      {(item.tokenContract ==
                         "0x3978398d6485c07BF0f4A95Ef8E4678B747E56b6" &&
-                        "Justin Bieber Justice World Tour - Kuala Lumpur : General Admission"}
+                        "Justin Bieber Justice World Tour - Kuala Lumpur : General Admission") ||
+                        (item.tokenContract ==
+                          "0x3978398d6485c07BF0f4A95Ef8E4678B747E56b6" &&
+                          "Justin Bieber Justice World Tour - Kuala Lumpur : VIP")}
                     </div>
                     <div className="flex flex-row gap-4 truncate items-center">
                       <div className="w-8 h-8 rounded-full bg-slate-300 flex-none"></div>
@@ -106,12 +118,9 @@ function marketplace() {
                       <div>{parseInt(item.tokenId)}</div>
                     </div>
                     <Link
-                      href={
-                        item.tokenContract ==
-                        "0x3978398d6485c07BF0f4A95Ef8E4678B747E56b6"
-                          ? `jbga/${item.tokenId}`
-                          : ""
-                      }
+                      href={`${item.tokenContract.toLowerCase()}/${
+                        item.tokenId
+                      }`}
                     >
                       <div className="btn btn-primary w-full">
                         Buy for {parseInt(item.askPrice) / gweiToEth} ETH

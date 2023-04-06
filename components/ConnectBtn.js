@@ -7,6 +7,7 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { TbPlugConnectedX, TbPlugConnected } from "react-icons/tb";
 import { BsPerson } from "react-icons/bs";
+import { BiErrorCircle } from "react-icons/bi";
 import Link from "next/link";
 import { Alchemy, Network } from "alchemy-sdk";
 import Balance from "./Balance";
@@ -33,22 +34,18 @@ export function Profile() {
 
   const [balance, setBalance] = useState(0);
 
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   const { connect } = useConnect({
     chainId: 5,
     connector: new MetaMaskConnector({ chains }),
   });
 
-  // useEffect(() => {
-  //   const { data } = useBalance({
-  //     address: address,
-  //   });
-
-  //   setBalance(data.formatted);
-  // }, [address]);
-
-  useEffect(() => {
-    setHasMounted(true);
-  });
+  // Create function to handle connect
+  // if window ethereum -> login
+  // else -> download first
 
   if (!hasMounted) return null;
 
@@ -95,15 +92,51 @@ export function Profile() {
   }
 
   return (
-    <div className="text-lg">
-      <button
-        className="btn nav-item-end gap-2 w-full"
-        onClick={() => connect()}
-      >
-        <TbPlugConnected />
-        <div className="hidden md:flex">Connect</div>
-      </button>
-
+    <div className="">
+      {!window.ethereum ? (
+        <>
+          <label htmlFor="my-modal-3" className="btn rounded-full nav-item-end">
+            <BiErrorCircle />
+          </label>
+          <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+          <div className="modal">
+            <div className="modal-box relative">
+              <label
+                htmlFor="my-modal-3"
+                className="btn btn-sm btn-circle absolute right-2 top-2"
+              >
+                ✕
+              </label>
+              <h3 className="text-lg font-bold text-black">
+                Metamask Not Detected!
+              </h3>
+              <p className="py-4 text-black flex flex-col gap-3">
+                <div>
+                  Please install the Metamask extension if you are using desktop
+                  or download the Metamask application if you are using
+                  smartphone.{" "}
+                </div>
+                <a
+                  href="https://metamask.io/download/"
+                  className="underline "
+                  target="_blank"
+                  rel="noReferrer"
+                >
+                  Download here
+                </a>{" "}
+              </p>
+            </div>
+          </div>
+        </>
+      ) : (
+        <button
+          className="btn nav-item-end gap-2 w-full"
+          onClick={() => connect()}
+        >
+          <TbPlugConnected />
+          <div className="hidden md:flex">Connect</div>
+        </button>
+      )}
       {error && <div>{error.message}</div>}
     </div>
   );

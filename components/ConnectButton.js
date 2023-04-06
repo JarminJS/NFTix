@@ -26,7 +26,7 @@ function ConnectButton() {
 
   return (
     <div
-      className="w-full rounded-xl btn bg-slate-200 border-none hover:bg-slate-300 text-black"
+      className="w-full rounded-xl btn btn-primary border-none"
       onClick={connect}
     >
       {" "}

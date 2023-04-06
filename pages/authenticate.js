@@ -35,7 +35,7 @@ export default function Authenticate() {
     };
 
     const alchemy = new Alchemy(settings);
-    var reply, own;
+    var reply;
 
     // Print NFT metadata returned in the response:
     try {
@@ -49,8 +49,8 @@ export default function Authenticate() {
     }
 
     // console.log(reply);
-    setResponse(reply);
     setOwner(data);
+    setResponse(reply);
   }
 
   return (
@@ -125,7 +125,11 @@ export default function Authenticate() {
                     href={`account/${owner}`}
                     className="hover:underline truncate"
                   >
-                    {owner.slice(0, 8) + "..." + owner.slice(-8)}
+                    {owner ? (
+                      owner.slice(0, 8) + "..." + owner.slice(-8)
+                    ) : (
+                      <>Loading...</>
+                    )}
                   </Link>
                 </div>
                 <div className="flex flex-row justify-between">

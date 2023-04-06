@@ -32,6 +32,7 @@ export default function Home({ isDbConnected, data }) {
   const concert = [];
   const run = [];
   const featured = [];
+
   const month = [
     "January",
     "February",
@@ -88,6 +89,7 @@ export default function Home({ isDbConnected, data }) {
       <Head>
         <title>NFTix</title>
       </Head>
+
       <div className="main-container">
         <Nav />
         <div className="flex flex-col md:w-2/3 md:mx-auto gap-6">

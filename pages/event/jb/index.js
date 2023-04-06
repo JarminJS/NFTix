@@ -5,8 +5,9 @@ import Image from "next/image";
 import Head from "next/head";
 import Nav from "../../../components/Nav";
 import clientPromise from "../../../lib/mongodb";
-import { useAccount } from "wagmi";
+import { useAccount, useContractRead } from "wagmi";
 import ConnectButton from "../../../components/ConnectButton";
+import abi from "../../../contracts/abi/testabi.json";
 
 export async function getServerSideProps() {
   try {
@@ -50,13 +51,6 @@ export default function jb(data) {
     "December",
   ];
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  if (!hasMounted) return null;
-
   const content = data.data[0];
   console.log();
   const tickets = content.ticket;
@@ -66,6 +60,41 @@ export default function jb(data) {
   const date = `${rawdate.getDate()} ${
     month[rawdate.getMonth()]
   } ${rawdate.getFullYear()},  ${rawdate.toLocaleTimeString()}`;
+
+  const gaConfig = {
+    address: "0x3978398d6485c07bf0f4a95ef8e4678b747e56b6",
+    abi: abi,
+  };
+
+  let { data: gaToken } = useContractRead({
+    ...gaConfig,
+    functionName: "currentTokenId",
+  });
+
+  gaToken = parseInt(gaToken);
+
+  const gaSupply = 20 - gaToken;
+
+  const vipConfig = {
+    address: "0x52Cf0f17dB253195d1DEDA70b31c1485B6Ee28B1",
+    abi: abi,
+  };
+
+  var { data: vipToken } = useContractRead({
+    ...vipConfig,
+    functionName: "currentTokenId",
+  });
+
+  vipToken = parseInt(vipToken);
+
+  const vipSupply = 20 - vipToken;
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) return null;
 
   return (
     <>
@@ -89,7 +118,7 @@ export default function jb(data) {
             </div>
             <div className="xl:w-1/2 w-full flex flex-col gap-6">
               <div className="text-2xl font-bold">{content.name}</div>
-              <div className="rounded-md border-slate-200 border-2 shadow-md p-4">
+              <div className="rounded-md border-slate-200 border-2 shadow-md p-4 bg-neutral-50">
                 <div className="text-lg">Event Detail</div>
 
                 <table className="w-full border-none">
@@ -107,7 +136,7 @@ export default function jb(data) {
                   </tr>
                 </table>
               </div>
-              <div className="w-full rounded-md text-black bg-transparent border-slate-200 border-2 shadow-md p-4">
+              <div className="w-full rounded-md text-black bg-neutral-50 border-slate-200 border-2 shadow-md p-4">
                 <table className="text-md w-full bg-transparent bg-opacity-0">
                   <thead>
                     <tr className="ticket text-left">
@@ -121,7 +150,10 @@ export default function jb(data) {
                       <tr key={ticket.type} className="ticket">
                         <td>{ticket.type}</td>
                         <td>{ticket.price} ETH</td>
-                        <td>{ticket.amount}</td>
+                        <td>
+                          {(ticket.type == "GA" && gaSupply) ||
+                            (ticket.type == "VIP" && vipSupply)}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -144,12 +176,12 @@ export default function jb(data) {
               </div> */}
             </div>
           </div>
-          <div className="flex flex-col px-4 md:px-0 gap-8 mb-8">
-            <div className="w-full border-2 border-slate-200 shadow-md p-4 rounded-md">
+          <div className="flex flex-col px-4 md:px-0 gap-8 mb-8 ">
+            <div className="w-full border-2 border-slate-200 shadow-md p-4 rounded-md bg-neutral-50">
               <div className="text-lg">Description</div>
               <div className="text-md">{content.description}</div>
             </div>
-            <div className="w-full border-2 border-slate-200 shadow-md p-4 rounded-md">
+            <div className="w-full border-2 border-slate-200 shadow-md p-4 rounded-md bg-neutral-50">
               <div className="text-lg">Terms and Condition</div>
               <ol className="list-decimal list-outside pl-8">
                 {tnc.map((x) => (

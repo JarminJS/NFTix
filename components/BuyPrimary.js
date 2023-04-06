@@ -202,7 +202,7 @@ export function BuyPrimary({ contract }) {
                 <div>
                   View Ticket:{" "}
                   <Link
-                    href={`/${slug}/${currentToken + 1}`}
+                    href={`/${contract.toLowerCase()}/${currentToken + 1}`}
                     className="hover:underline font-bold"
                   >
                     Click Link
