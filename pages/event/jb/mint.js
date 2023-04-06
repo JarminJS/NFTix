@@ -129,10 +129,10 @@ export default function Mint({ data, price }) {
             <div className="gap-6 flex flex-col mx-auto">
               <div className="w-full rounded-lg border-slate-200 border-2 shadow-md p-4 bg-slate-50">
                 <div className="text-lg mb-2">General Admission Ticket</div>
-                <BuyPrimary
+                {/* <BuyPrimary
                   contract={"0x3978398d6485c07bf0f4a95ef8e4678b747e56b6"}
                   price={price}
-                />
+                /> */}
               </div>
               <div className="w-full rounded-lg border-slate-200 border-2 shadow-md p-4 bg-slate-50">
                 <div className="text-lg mb-2">VIP Experience Ticket</div>
