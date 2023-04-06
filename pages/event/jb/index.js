@@ -159,12 +159,11 @@ export default function jb(data) {
                   </tbody>
                 </table>
               </div>
-              {!isConnected && <ConnectButton />}
-              {isConnected && (
-                <Link href="/event/jb/mint">
-                  <div className="w-full btn btn-primary">Buy Ticket</div>
-                </Link>
-              )}
+
+              <Link href="/event/jb/mint">
+                <div className="w-full btn btn-primary">Buy Ticket</div>
+              </Link>
+
               {/* Will change to a button -> redirect to ticket minting page */}
               {/* <div className="rounded-md border-slate-200 border-2 shadow-md p-4">
                 <div className="text-lg mb-2">

@@ -12,7 +12,6 @@ import abi from "../contracts/abi/testabi.json";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { configureChains, goerli } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
-import RM from "./RM";
 
 const { chains } = configureChains(
   [goerli],
