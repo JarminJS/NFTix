@@ -144,7 +144,7 @@ function marketplace({ price }) {
 export default marketplace;
 
 export async function getServerSideProps() {
-  var data = await fetch("http://localhost:3000/api/price");
+  var data = await fetch("https://nf-tix.vercel.app/api/price");
   data = await data.json();
 
   // console.log(data);
