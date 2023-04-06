@@ -1,21 +1,14 @@
 import Moralis from "moralis";
 
 export default async function handler(req, res) {
-  let data;
+  let data = await fetch(
+    "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=myr"
+  );
 
-  const response = await Moralis.EvmApi.token.getTokenPrice({
-    chain: "0x1",
-    exchange: "uniswap-v2",
-    address: "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0",
-  });
+  data = await data.json();
 
-  data = response.raw;
-
+  //   console.log(data.ethereum.myr);
   // console.log(data);
 
-  res.status(200).json(data);
+  res.status(200).json(data.ethereum.myr);
 }
-
-Moralis.start({
-  apiKey: "UDe8hveE2aWy9mWhE0zXJJgxZnY0dEJB2V5cyhtNezr7lQCxChKiTx4OX8uLFcYl",
-});

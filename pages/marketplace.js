@@ -7,7 +7,7 @@ import marketabi from "../contracts/abi/marketplace.json";
 import Link from "next/link";
 import Image from "next/image";
 
-function marketplace() {
+function marketplace({ price }) {
   const [hasMounted, setHasMounted] = useState(false);
   const marketplaceAdd = "0x402a478f22DA7D85006Ab6cE9eDfF896A4905D00";
   const gweiToEth = 1000000000000000000;
@@ -22,7 +22,7 @@ function marketplace() {
     functionName: "saleCounter",
   });
   counter = parseInt(counter);
-  console.log(counter);
+  // console.log(counter);
 
   var i = 1,
     j = 0,
@@ -50,7 +50,7 @@ function marketplace() {
     i++;
   }
 
-  console.log(listing[0]);
+  // console.log(listing[0]);
 
   // console.log(listing);
 
@@ -123,7 +123,11 @@ function marketplace() {
                       }`}
                     >
                       <div className="btn btn-primary w-full">
-                        Buy for {parseInt(item.askPrice) / gweiToEth} ETH
+                        Buy for {parseInt(item.askPrice) / gweiToEth} ETH ~ RM
+                        {(
+                          (parseInt(item.askPrice) / gweiToEth) *
+                          price
+                        ).toFixed(2)}
                       </div>
                     </Link>
                   </div>
@@ -138,3 +142,16 @@ function marketplace() {
 }
 
 export default marketplace;
+
+export async function getServerSideProps() {
+  var data = await fetch("http://localhost:3000/api/price");
+  data = await data.json();
+
+  // console.log(data);
+
+  return {
+    props: {
+      price: data,
+    },
+  };
+}

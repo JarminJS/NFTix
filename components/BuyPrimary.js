@@ -12,13 +12,14 @@ import abi from "../contracts/abi/testabi.json";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { configureChains, goerli } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
+import RM from "./RM";
 
 const { chains } = configureChains(
   [goerli],
   [alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY })]
 );
 
-export function BuyPrimary({ contract }) {
+export function BuyPrimary({ contract, price }) {
   const [addressOwn, setAddressOwn] = useState();
   const { address, isConnected } = useAccount();
   const [hasMounted, setHasMounted] = useState();
@@ -26,6 +27,8 @@ export function BuyPrimary({ contract }) {
   const gweiToEth = 1000000000000000000;
   var ticketPrice;
   let slug;
+
+  console.log(price);
 
   if (contract == "0x3978398d6485c07bf0f4a95ef8e4678b747e56b6") {
     slug = "jbga";
@@ -44,7 +47,7 @@ export function BuyPrimary({ contract }) {
 
   useEffect(() => {
     setHasMounted(true);
-  });
+  }, []);
 
   // useEffect(() => {
   //   // console.log(quantity);
@@ -169,8 +172,10 @@ export function BuyPrimary({ contract }) {
                 </select>
               </label>
             </form>
-            <div className="btn-primary" onClick={() => write()}>
-              Buy Ticket
+            <div className="btn-primary " onClick={() => write()}>
+              Buy {quantity} Ticket for {(quantity * ticketPrice).toFixed(2)}{" "}
+              ETH ~ RM
+              {(quantity * ticketPrice * price).toFixed(2)}
             </div>
           </div>
         )}
@@ -246,6 +251,15 @@ export function BuyPrimary({ contract }) {
       )}
     </>
   );
+}
+
+export async function getServerSideProps() {
+  var data = await fetch("http://localhost:3000/api/price");
+  data = await data.json();
+
+  // console.log(data);
+
+  return data;
 }
 
 // if successful -> notification bottom left redirect to ticket // modal with both link to transaction hash and ticket

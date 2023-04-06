@@ -15,8 +15,14 @@ export async function getServerSideProps() {
       .limit(1)
       .toArray();
 
+    var price = await fetch("http://localhost:3000/api/price");
+    price = await price.json();
+
     return {
-      props: { data: JSON.parse(JSON.stringify(event)) },
+      props: {
+        data: JSON.parse(JSON.stringify(event)),
+        price: price,
+      },
     };
   } catch (e) {
     console.error(e);
@@ -29,7 +35,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Mint(data) {
+export default function Mint({ data, price }) {
   const [ticketType, setTicketType] = useState(0);
   const [hasMounted, setHasMounted] = useState(0);
   const month = [
@@ -57,7 +63,7 @@ export default function Mint(data) {
 
   if (!hasMounted) return null;
 
-  const content = data.data[0];
+  const content = data[0];
   const rawdate = new Date(content.date);
   const date = `${rawdate.getDate()} ${
     month[rawdate.getMonth()]
@@ -125,12 +131,14 @@ export default function Mint(data) {
                 <div className="text-lg mb-2">General Admission Ticket</div>
                 <BuyPrimary
                   contract={"0x3978398d6485c07bf0f4a95ef8e4678b747e56b6"}
+                  price={price}
                 />
               </div>
               <div className="w-full rounded-lg border-slate-200 border-2 shadow-md p-4">
                 <div className="text-lg mb-2">VIP Experience Ticket</div>
                 <BuyPrimary
                   contract={"0x52Cf0f17dB253195d1DEDA70b31c1485B6Ee28B1"}
+                  price={price}
                 />
               </div>
             </div>
