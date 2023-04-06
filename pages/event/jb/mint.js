@@ -73,7 +73,7 @@ export default function Mint({ data, price }) {
 
   return (
     <>
-      <div className="font-sans bg-slate-50 min-h-screen min-w-screen text-black">
+      <div className="main-container">
         <Nav />
 
         <div className="flex flex-col md:w-2/3 mx-auto gap-6 my-8 ">
@@ -90,7 +90,7 @@ export default function Mint({ data, price }) {
             </div>
             <div className="xl:w-1/2 w-full flex flex-col gap-6">
               <div className="text-2xl font-bold">{content.name}</div>
-              <div className="w-full rounded-md text-black bg-transparent border-slate-200 border-2 shadow-md p-4">
+              <div className="w-full rounded-md text-black bg-slate-50 border-slate-200 border-2 shadow-md p-4">
                 <div className="font-bold">Event Details</div>
                 <table className="w-full border-none">
                   <tbody>
@@ -127,14 +127,14 @@ export default function Mint({ data, price }) {
           </div>
           <div className="w-full px-4 lg:px-0">
             <div className="gap-6 flex flex-col mx-auto">
-              <div className="w-full rounded-lg border-slate-200 border-2 shadow-md p-4">
+              <div className="w-full rounded-lg border-slate-200 border-2 shadow-md p-4 bg-slate-50">
                 <div className="text-lg mb-2">General Admission Ticket</div>
                 <BuyPrimary
                   contract={"0x3978398d6485c07bf0f4a95ef8e4678b747e56b6"}
                   price={price}
                 />
               </div>
-              <div className="w-full rounded-lg border-slate-200 border-2 shadow-md p-4">
+              <div className="w-full rounded-lg border-slate-200 border-2 shadow-md p-4 bg-slate-50">
                 <div className="text-lg mb-2">VIP Experience Ticket</div>
                 <BuyPrimary
                   contract={"0x52Cf0f17dB253195d1DEDA70b31c1485B6Ee28B1"}

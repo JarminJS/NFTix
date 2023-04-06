@@ -60,7 +60,7 @@ function Stats({ contract }) {
   }, [currentToken, addressOwn, totalSupply]);
 
   return (
-    <div className="w-full text-black rounded-md border-slate-200 border-2 p-4 shadow-md">
+    <div className="w-full text-black rounded-md border-slate-200 border-2 p-4 shadow-md bg-slate-50">
       <div className="font-bold text-lg">{symbol} Ticket Statistics </div>
       <table className="w-full border-none">
         <tbody>

@@ -28,7 +28,7 @@ export function BuyPrimary({ contract, price }) {
   var ticketPrice;
   let slug;
 
-  console.log(price);
+  // console.log(price);
 
   if (contract == "0x3978398d6485c07bf0f4a95ef8e4678b747e56b6") {
     slug = "jbga";
@@ -61,24 +61,6 @@ export function BuyPrimary({ contract, price }) {
 
   // const ticketPrice = parseFloat(price.toString() / gweiToEth).toFixed(2);
 
-  let { config } = usePrepareContractWrite({
-    ...contractConfig,
-    functionName: "buyPrimary",
-    args: [address, quantity],
-    overrides: {
-      value: ethers.utils.parseEther(
-        (ticketPrice * quantity).toFixed(2).toString()
-      ),
-    },
-    gasLimit: 50000000000,
-  });
-
-  const { data, error, isError, write } = useContractWrite(config);
-
-  const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: data?.hash,
-  });
-
   const { data: limitPerPerson } = useContractRead({
     ...contractConfig,
     functionName: "LIMIT_PER_PERSON",
@@ -99,9 +81,27 @@ export function BuyPrimary({ contract, price }) {
 
   const options = [];
 
-  for (var amount = 1; amount <= left; amount++) {
+  for (var amount = 0; amount <= left; amount++) {
     options.push({ value: amount });
   }
+
+  let { config } = usePrepareContractWrite({
+    ...contractConfig,
+    functionName: "buyPrimary",
+    args: [address, quantity],
+    overrides: {
+      value: ethers.utils.parseEther(
+        (ticketPrice * quantity).toFixed(2).toString()
+      ),
+    },
+    gasLimit: 50000000000,
+  });
+
+  const { data, error, isError, write } = useContractWrite(config);
+
+  const { isLoading, isSuccess } = useWaitForTransaction({
+    hash: data?.hash,
+  });
 
   //
 
