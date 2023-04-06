@@ -36,8 +36,7 @@ export async function getServerSideProps() {
 }
 
 export default function Mint({ data, price }) {
-  const [ticketType, setTicketType] = useState(0);
-  const [hasMounted, setHasMounted] = useState(0);
+  const [hasMounted, setHasMounted] = useState();
   const month = [
     "January",
     "February",
@@ -56,10 +55,6 @@ export default function Mint({ data, price }) {
   useEffect(() => {
     setHasMounted(true);
   }, []);
-
-  // useEffect(() => {
-  //   console.log(ticketType);
-  // }, [ticketType]);
 
   if (!hasMounted) return null;
 
@@ -129,17 +124,17 @@ export default function Mint({ data, price }) {
             <div className="gap-6 flex flex-col mx-auto">
               <div className="w-full rounded-lg border-slate-200 border-2 shadow-md p-4 bg-slate-50">
                 <div className="text-lg mb-2">General Admission Ticket</div>
-                {/* <BuyPrimary
+                <BuyPrimary
                   contract={"0x3978398d6485c07bf0f4a95ef8e4678b747e56b6"}
                   price={price}
-                /> */}
+                />
               </div>
               <div className="w-full rounded-lg border-slate-200 border-2 shadow-md p-4 bg-slate-50">
                 <div className="text-lg mb-2">VIP Experience Ticket</div>
-                {/* <BuyPrimary
+                <BuyPrimary
                   contract={"0x52Cf0f17dB253195d1DEDA70b31c1485B6Ee28B1"}
                   price={price}
-                /> */}
+                />
               </div>
             </div>
           </div>
