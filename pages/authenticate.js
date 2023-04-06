@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import abi from "../contracts/abi/testabi.json";
 import { useContractRead } from "wagmi";
+import Moralis from "moralis";
 
 export default function Authenticate() {
   const [ticket, setTicket] = useState(0);
@@ -150,3 +151,7 @@ export default function Authenticate() {
     </div>
   );
 }
+
+// export async function getServerSideProps() {
+//   return null;
+// }
