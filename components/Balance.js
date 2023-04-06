@@ -13,6 +13,6 @@ function Balance() {
     setHasMounted(true);
   }, []);
 
-  return <div className="font-semibold">{data.formatted.slice(0, 5)} ETH</div>;
+  return <div className="font-semibold">{data?.formatted.slice(0, 5)} ETH</div>;
 }
 export default Balance;
