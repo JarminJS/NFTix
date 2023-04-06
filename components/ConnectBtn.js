@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useAccount, useConnect, useDisconnect, useBalance } from "wagmi";
@@ -8,6 +9,7 @@ import { TbPlugConnectedX, TbPlugConnected } from "react-icons/tb";
 import { BsPerson } from "react-icons/bs";
 import Link from "next/link";
 import { Alchemy, Network } from "alchemy-sdk";
+import Balance from "./Balance";
 
 // Configure chains & providers with the Alchemy provider.
 // Two popular providers are Alchemy (alchemy.com) and Infura (infura.io)
@@ -28,18 +30,21 @@ export function Profile() {
   const { address, isConnected } = useAccount();
   const { error } = useConnect();
   const { disconnect } = useDisconnect();
-  var bal = 0;
+
+  const [balance, setBalance] = useState(0);
 
   const { connect } = useConnect({
     chainId: 5,
     connector: new MetaMaskConnector({ chains }),
   });
 
-  const { data, isError, isLoading } = useBalance({
-    address: address,
-  });
+  // useEffect(() => {
+  //   const { data } = useBalance({
+  //     address: address,
+  //   });
 
-  console.log(data);
+  //   setBalance(data.formatted);
+  // }, [address]);
 
   useEffect(() => {
     setHasMounted(true);
@@ -53,18 +58,19 @@ export function Profile() {
         <div className="dropdown dropdown-end">
           <label
             tabIndex={0}
-            className="btn btn-ghost btn-circle avatar bg-white"
+            className="btn btn-ghost btn-circle avatar bg-white active:bg-white hover:bg-slate-300"
           >
-            <BsPerson className="text-violet-900" />
+            <BsPerson className="text-indigo-900" />
           </label>
           <ul
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black"
           >
-            <li className="text-left">
-              <div className="hover:bg-white active:bg-white active:text-black">
-                Balance: {data.formatted.slice(0, 5)} ETH <br />
-              </div>
+            <li className="text-left cursor-none">
+              <span className="hover:bg-white active:bg-white active:text-black text-sm">
+                Balance:
+                <Balance />
+              </span>
             </li>
             <li>
               <Link href={`/account/${address}`} className="flex gap-2">

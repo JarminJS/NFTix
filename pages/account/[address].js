@@ -43,19 +43,16 @@ export default function Account(data) {
               ) : (
                 <></>
               )}
-              <div className="w-full flex md:flex-row flex-col gap-6 flex-wrap pb-8">
+              <div className="w-full flex sm:flex-row gap-2 flex-wrap pb-8">
                 {owned.map((item) => (
                   // eslint-disable-next-line react/jsx-key
                   <Link
                     key={item.contract.address && item.tokenId}
                     href={`${item.contract.address}/${item.tokenId}`}
-                    className="md:w-1/3 sm:w-1/2 w-full rounded-xl flex-1 md:flex-none text-black bg-transparent border-slate-200 border-2 shadow-md flex-col hover:border-blue-800 hover:scale-[1.01]"
+                    className="md:w-1/4 w-1/3 rounded-xl flex-auto text-black bg-transparent border-slate-200 border-2 shadow-md flex-row hover:border-blue-800 hover:scale-[1.01]"
                   >
                     <Image
-                      src={
-                        item.contract.address == jbga &&
-                        "https://bafybeibnrasojyzexvr232dnuwyykw4v6mrjrcdn3sggjybfwcyenx7u34.ipfs.nftstorage.link/GA.png"
-                      }
+                      src={`${item.media[0].gateway}`}
                       width={2000}
                       height={2000}
                       className="rounded-t-xl"
@@ -63,10 +60,7 @@ export default function Account(data) {
                       priority
                     />
                     <div className="p-4 flex flex-col gap-2 text-sm">
-                      <div className="font-bold">
-                        {item.contract.address == jbga &&
-                          "Justin Bieber Justice World Tour - Kuala Lumpur : General Admission"}
-                      </div>
+                      <div className="font-bold line-clamp-2">{item.title}</div>
                       <div className="flex flex-row justify-between">
                         <div>Token ID: </div>
                         <div>{parseInt(item.tokenId)}</div>
@@ -81,16 +75,6 @@ export default function Account(data) {
                       <div className="btn btn-primary">View</div>
                     </div>
                   </Link>
-                  // eslint-disable-next-line react/jsx-key
-                  // <>
-                  //   <div>
-                  //     {item.contract.address ==
-                  //     0x3978398d6485c07bf0f4a95ef8e4678b747e56b6
-                  //       ? "True"
-                  //       : "False"}
-                  //   </div>
-                  //   {/* <div>{item.contract}</div> */}
-                  // </>
                 ))}
               </div>
             </>

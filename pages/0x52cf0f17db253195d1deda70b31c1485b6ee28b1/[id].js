@@ -121,7 +121,7 @@ export default function Ticket(data) {
   return (
     <>
       <Head>
-        <title>JBGA - {id}</title>
+        <title>JBVIP - {id}</title>
       </Head>
       <div className="font-sans bg-slate-50 min-h-screen min-w-screen text-black pb-10">
         <Nav />
@@ -288,7 +288,7 @@ export async function getServerSideProps({ params }) {
 
     const alchemy = new Alchemy(settings);
 
-    const contract = "0x52cf0f17db253195d1deda70b31c1485b6ee28b1";
+    const contract = "0x52Cf0f17dB253195d1DEDA70b31c1485B6Ee28B1";
 
     // Print NFT metadata returned in the response:
     let response = await alchemy.nft.getNftMetadata(contract, params.id);

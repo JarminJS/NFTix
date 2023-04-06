@@ -49,9 +49,12 @@ function Nav() {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl text-neutral-50">
+        <Link
+          className="btn btn-ghost normal-case text-xl text-neutral-50"
+          href="/"
+        >
           NFTix
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 flex flex-row gap-4">

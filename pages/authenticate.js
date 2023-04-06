@@ -59,10 +59,10 @@ export default function Authenticate() {
 
       <div className=" md:w-2/3 md:mx-auto text-black mt-4 flex flex-col gap-3  mx-4">
         <div className="text-2xl font-bold">Authenticate</div>
-        <form className="w-full flex flex-row items-center form-control rounded-none mx-auto">
-          <label className="input-group w-full">
+        <form className="w-full flex flex-col sm:flex-row items-center form-control rounded-none mx-auto">
+          <label className="sm:input-group w-full">
             <select
-              className="select select-bordered w-1/3 bg-white text-base"
+              className="select select-bordered w-full sm:w-1/3 rounded-b-none bg-white text-base"
               onChange={(e) => {
                 setTicket(e.target.value);
               }}
@@ -86,14 +86,14 @@ export default function Authenticate() {
             <input
               type="number"
               placeholder="Token ID"
-              className="input w-1/2 border-1 border-slate-300"
+              className="input w-full sm:w-1/2 border-1 border-slate-300 rounded-none"
               min={1}
               onChange={(e) => {
                 setTokenId(e.target.value);
               }}
             />
             <div
-              className="btn btn-primary w-1/6"
+              className="btn text-white bg-gradient-to-r from-blue-800 to-indigo-900 sm:w-1/6 w-full rounded-t-none"
               onClick={() => findNFT(ticket, tokenId)}
             >
               Find Ticket
