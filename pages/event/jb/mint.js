@@ -15,8 +15,10 @@ export async function getServerSideProps() {
       .limit(1)
       .toArray();
 
-    var price = await fetch("http://localhost:3000/api/price");
+    var price = await fetch("https://nf-tix.vercel.app/api/price");
     price = await price.json();
+
+    // console.log(event);
 
     return {
       props: {
@@ -57,6 +59,8 @@ export default function Mint({ data, price }) {
   }, []);
 
   if (!hasMounted) return null;
+
+  console.log(data);
 
   const content = data[0];
 
