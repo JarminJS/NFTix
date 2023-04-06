@@ -22,7 +22,7 @@ export function DelistButton({ listingid }) {
 
   useEffect(() => {
     setHasMounted(true);
-  });
+  }, []);
 
   const {
     config,
