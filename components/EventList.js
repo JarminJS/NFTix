@@ -26,7 +26,7 @@ export default function EventList(data) {
                   {event.tag}
                 </div>
 
-                <div className="font-bold text-lg line-clamp-1">
+                <div className="font-bold sm:text-lg line-clamp-1">
                   {event.name}
                 </div>
 
