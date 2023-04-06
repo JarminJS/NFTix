@@ -59,7 +59,7 @@ function marketplace() {
       <Head>
         <title>Marketplace | NFTix</title>
       </Head>
-      <div className="flex flex-col bg-neutral-50 min-h-screen min-w-fit">
+      <div className="main-container">
         <Nav />
 
         <div className=" md:w-2/3 md:mx-auto text-black mt-4 flex flex-col gap-6  mx-4 mb-8">
@@ -69,7 +69,7 @@ function marketplace() {
               // eslint-disable-next-line react/jsx-key
               <div
                 key={item.tokenContract && item.tokenId}
-                className="md:w-1/4 w-full rounded-xl text-black bg-transparent border-slate-200 border-2 shadow-md flex-1 flex-col hover:border-blue-800 hover:scale-[1.01]"
+                className="md:w-1/4 w-full rounded-xl text-black bg-neutral-50 border-slate-200 border-2 shadow-md flex-1 flex-col hover:border-blue-800 hover:scale-[1.01]"
               >
                 <Image
                   src={

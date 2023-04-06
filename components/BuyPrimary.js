@@ -100,6 +100,8 @@ export function BuyPrimary({ contract }) {
     options.push({ value: amount });
   }
 
+  //
+
   const { connect } = useConnect({
     chainId: 5,
     connector: new MetaMaskConnector({ chains }),

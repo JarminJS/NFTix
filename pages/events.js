@@ -38,7 +38,7 @@ export default function Events({ events }) {
       <Head>
         <title>Events | NFTix</title>
       </Head>
-      <div className="flex flex-col bg-neutral-50 min-h-screen min-w-fit pb-8">
+      <div className="main-container">
         <Nav />
         <div className="flex flex-col md:w-2/3 md:mx-auto gap-6 mt-4 ">
           <div className="w-full text-lg font-semibold px-4 md:px-0 ">

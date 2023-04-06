@@ -13,6 +13,12 @@ module.exports = {
         port: "",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "nft-cdn.alchemy.com",
+        port: "",
+        pathname: "**",
+      },
     ],
   },
 };

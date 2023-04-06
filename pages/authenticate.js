@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Network, Alchemy } from "alchemy-sdk";
 import Nav from "../components/Nav";
 import Link from "next/link";
@@ -12,6 +12,10 @@ export default function Authenticate() {
   const [tokenId, setTokenId] = useState(0);
   const [response, setResponse] = useState();
   const [owner, setOwner] = useState();
+
+  useEffect(() => {
+    console.log(response);
+  }, [response]);
 
   const contractConfig = {
     address: ticket.toString(),
@@ -50,7 +54,7 @@ export default function Authenticate() {
   }
 
   return (
-    <div className="flex flex-col bg-neutral-50 min-h-screen min-w-fit">
+    <div className="main-container">
       <Nav />
 
       <div className=" md:w-2/3 md:mx-auto text-black mt-4 flex flex-col gap-3  mx-4">
@@ -104,13 +108,9 @@ export default function Authenticate() {
 
         {response != null && (
           <>
-            <div className="md:w-1/4 w-full rounded-xl text-black bg-transparent border-slate-200 border-2 shadow-md flex-1 flex-col mt-4 mx-auto mb-8">
+            <div className="md:w-1/4 w-full rounded-xl text-black bg-neutral-50 border-slate-200 border-2 shadow-md flex-1 flex-col mt-4 mx-auto mb-8">
               <Image
-                src={
-                  response.contract.address ==
-                    0x3978398d6485c07bf0f4a95ef8e4678b747e56b6 &&
-                  "https://bafybeibnrasojyzexvr232dnuwyykw4v6mrjrcdn3sggjybfwcyenx7u34.ipfs.nftstorage.link/GA.png"
-                }
+                src={response.media[0].gateway}
                 width={2000}
                 height={2000}
                 className="rounded-t-xl"
@@ -133,12 +133,7 @@ export default function Authenticate() {
                   <div>{parseInt(response.tokenId)}</div>
                 </div>
                 <Link
-                  href={
-                    response.contract.address ==
-                    0x3978398d6485c07bf0f4a95ef8e4678b747e56b6
-                      ? `jbga/${response.tokenId}`
-                      : ""
-                  }
+                  href={`${response.contract.address}/${response.tokenId}`}
                   className="hover:scale-[1.02]"
                 >
                   <div className="btn btn-primary w-full">View Ticket</div>

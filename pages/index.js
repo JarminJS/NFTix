@@ -88,7 +88,7 @@ export default function Home({ isDbConnected, data }) {
       <Head>
         <title>NFTix</title>
       </Head>
-      <div className="flex flex-col bg-neutral-50 min-h-screen min-w-fit pb-8">
+      <div className="main-container">
         <Nav />
         <div className="flex flex-col md:w-2/3 md:mx-auto gap-6">
           {/* Image Carousel */}

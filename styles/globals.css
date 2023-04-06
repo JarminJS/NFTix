@@ -34,3 +34,7 @@ td {
 .main {
   @apply text-base line-clamp-1;
 }
+
+.main-container {
+  @apply bg-neutral-100 min-h-screen pb-8 text-sm sm:text-base;
+}

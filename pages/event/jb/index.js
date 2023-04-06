@@ -72,7 +72,7 @@ export default function jb(data) {
       <Head>
         <title>{content.name}</title>
       </Head>
-      <div className="font-sans bg-slate-50 min-h-screen min-w-screen text-black text-sm sm:text-base">
+      <div className="main-container">
         <Nav />
 
         <div className=" flex flex-col md:w-2/3 mx-auto gap-6 mt-8 ">

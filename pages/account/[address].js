@@ -16,6 +16,7 @@ export default function Account(data) {
   // console.log(data.data);
 
   const jbga = 0x3978398d6485c07bf0f4a95ef8e4678b747e56b6;
+  // const jbvip = ;
 
   return (
     <>
@@ -47,11 +48,7 @@ export default function Account(data) {
                   // eslint-disable-next-line react/jsx-key
                   <Link
                     key={item.contract.address && item.tokenId}
-                    href={
-                      item.contract.address == jbga
-                        ? `jbga/${item.tokenId}`
-                        : ""
-                    }
+                    href={`${item.contract.address}/${item.tokenId}`}
                     className="md:w-1/3 sm:w-1/2 w-full rounded-xl flex-1 md:flex-none text-black bg-transparent border-slate-200 border-2 shadow-md flex-col hover:border-blue-800 hover:scale-[1.01]"
                   >
                     <Image
