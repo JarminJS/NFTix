@@ -44,10 +44,6 @@ export function BuyPrimary({ contract, price }) {
     abi: abi,
   };
 
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
   // useEffect(() => {
   //   // console.log(quantity);
   //   // console.log(newPrice);
@@ -115,6 +111,11 @@ export function BuyPrimary({ contract, price }) {
   });
 
   currentToken = Number(currentToken);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   if (!isConnected) {
     return (
       <div
