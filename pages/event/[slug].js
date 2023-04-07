@@ -118,8 +118,7 @@ export default function cas({ data }) {
                   <thead>
                     <tr className="ticket text-left">
                       <th className="w-1/3">
-                        {content.tag == "concert" ||
-                          (content.tag == "expo" && "Ticket Type")}
+                        {content.tag != "run" && "Ticket Type"}
                         {content.tag == "run" && "Category"}
                       </th>
                       <th className="w-1/3">Price</th>

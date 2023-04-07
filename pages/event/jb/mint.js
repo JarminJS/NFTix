@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 import Nav from "../../../components/Nav";
 import clientPromise from "../../../lib/mongodb";
 import { BuyPrimary } from "../../../components/BuyPrimary";
@@ -75,6 +76,7 @@ export default function Mint({ data, price }) {
 
   return (
     <>
+      <Head>{content.name}</Head>
       <div className="main-container">
         <Nav />
 
