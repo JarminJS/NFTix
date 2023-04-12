@@ -2,6 +2,7 @@ import clientPromise from "../lib/mongodb";
 import Head from "next/head";
 import Nav from "../components/Nav";
 import EventList from "../components/EventList";
+import { useState, useEffect } from "react";
 
 export default function Events({ events }) {
   const month = [
@@ -33,6 +34,21 @@ export default function Events({ events }) {
     // console.log(featured, expo, concert, run);
   }
 
+  const max = events.length;
+
+  const [total, setTotal] = useState(6);
+
+  const [evts, setEvts] = useState(events.slice(0, 6));
+
+  useEffect(() => {
+    if (total) {
+      setEvts(events.slice(0, total));
+    }
+  }, [total, events]);
+
+  function loadMore() {
+    setTotal(total + 10);
+  }
   return (
     <>
       <Head>
@@ -44,7 +60,14 @@ export default function Events({ events }) {
           <div className="w-full text-lg font-semibold px-4 md:px-0 ">
             <div className="text-2xl font-bold">Events</div>
           </div>
-          <EventList events={events} />
+          <EventList events={evts} />
+          {total < max && (
+            <div className="-my-2 flex w-full justify-center ">
+              <div className="btn btn-primary w-fit" onClick={loadMore}>
+                Load More
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>

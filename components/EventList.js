@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function EventList(data) {
   const events = data.events;
   return (
-    <div className="flex flex-row flex-wrap  px-4 md:px-0 items-start rounded-md flex-auto  w-full">
+    <div className="flex flex-row flex-wrap px-4 md:px-0 items-start rounded-md flex-auto  w-full">
       {events.map((event) => (
         <div key={event.id} className="flex flex-col md:w-1/3 w-1/2 ">
           <div className="mx-1 my-2 sm:mx-2 sm:my-3 ">

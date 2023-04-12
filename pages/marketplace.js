@@ -24,6 +24,10 @@ function marketplace({ price }) {
   counter = parseInt(counter);
   // console.log(counter);
 
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   var i = 1,
     j = 0,
     hexNum,
@@ -53,10 +57,6 @@ function marketplace({ price }) {
   // console.log(listing[0]);
 
   // console.log(listing);
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
 
   if (!hasMounted) return null;
 
