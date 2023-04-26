@@ -39,12 +39,24 @@ export default function Transaction({ transactions }) {
                 <td>
                   {item.to_address ==
                     "0x402a478f22da7d85006ab6ce9edff896a4905d00" &&
-                    "Marketplace Interaction"}
+                    item.value != 0 &&
+                    "Buy Secondary"}
+                  {item.to_address ==
+                    "0x402a478f22da7d85006ab6ce9edff896a4905d00" &&
+                    item.value == 0 &&
+                    "List/Delist"}
                   {(item.to_address ==
                     "0x3978398d6485c07bf0f4a95ef8e4678b747e56b6" ||
                     item.to_address ==
                       "0x52cf0f17db253195d1deda70b31c1485b6ee28b1") &&
+                    item.value != 0 &&
                     "Buy Primary"}
+                  {(item.to_address ==
+                    "0x3978398d6485c07bf0f4a95ef8e4678b747e56b6" ||
+                    item.to_address ==
+                      "0x52cf0f17db253195d1deda70b31c1485b6ee28b1") &&
+                    item.value == 0 &&
+                    "Approve Marketplace"}
                   {item.to_address !=
                     "0x402a478f22da7d85006ab6ce9edff896a4905d00" &&
                     item.to_address !=
