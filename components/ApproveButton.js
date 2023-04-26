@@ -19,6 +19,7 @@ const { chains } = configureChains(
 );
 
 export function ApproveButton({ contract, tokenid }) {
+  const router = useRouter();
   const marketplaceAdd = "0x402a478f22da7d85006ab6ce9edff896a4905d00";
 
   const contractConfig = {
@@ -48,11 +49,15 @@ export function ApproveButton({ contract, tokenid }) {
     hash: data?.hash,
   });
 
+  if (isSuccess) {
+    router.reload();
+  }
+
   return (
     <>
       <div>
         {isLoading ? (
-          <div className="btn-primary">Approving...</div>
+          <div className="btn-primary w-full">Approving...</div>
         ) : (
           <div className="flex flex-col gap-4 ">
             <div className="btn-primary" onClick={() => write()}>

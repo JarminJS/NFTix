@@ -17,7 +17,8 @@ export default async (req, res) => {
 
   const alchemy = new Alchemy(settings);
 
-  const contract = "0x3978398d6485c07bf0f4a95ef8e4678b747e56b6";
+  // const contract = "0x3978398d6485c07bf0f4a95ef8e4678b747e56b6";
+  const contract = "0x52Cf0f17dB253195d1DEDA70b31c1485B6Ee28B1";
 
   // Print NFT metadata returned in the response:
   const response = await alchemy.nft.getNftMetadata(contract, id);

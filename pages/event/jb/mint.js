@@ -76,7 +76,9 @@ export default function Mint({ data, price }) {
 
   return (
     <>
-      <Head>{content.name}</Head>
+      <Head>
+        <title>{content.name}</title>
+      </Head>
       <div className="main-container">
         <Nav />
 

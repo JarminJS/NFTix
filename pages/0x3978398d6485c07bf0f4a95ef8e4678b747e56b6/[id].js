@@ -53,12 +53,11 @@ export default function Ticket({ data, transfer }) {
   // // console.log(listed);
 
   while (i < counter) {
-    hexNum = i.toString(16);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { data: listed } = useContractRead({
       ...marketConfig,
       functionName: "getListing",
-      args: [hexNum],
+      args: [i],
     });
 
     // console.log(listed);
@@ -108,6 +107,8 @@ export default function Ticket({ data, transfer }) {
   if (!hasMounted) return null;
 
   if (!metadata) {
+    router.reload();
+
     return (
       <div className="font-sans bg-slate-50 min-h-screen min-w-screen text-black ">
         <Nav />
@@ -182,11 +183,12 @@ export default function Ticket({ data, transfer }) {
               </div>
               <div className="rounded-md border-slate-200 border-2 shadow-md p-4 flex flex-col gap-3">
                 <div className="text-lg font-bold">Ticket Detail</div>
-                <div className="flex flex-row justify-between">
+                <div className="flex flex-col sm:flex-row justify-between">
                   <div>Contract Address: </div>
                   <div>
                     <a
                       href={`https://goerli.etherscan.io/address/${contractAddress}}`}
+                      className="truncate"
                     >
                       {contractAddress.slice(0, 8) +
                         "..." +
@@ -276,9 +278,6 @@ export default function Ticket({ data, transfer }) {
   );
 }
 
-// get owner
-// get past transactions
-
 export async function getServerSideProps({ params }) {
   try {
     const settings = {
@@ -308,7 +307,7 @@ export async function getServerSideProps({ params }) {
     if (!response.tokenUri) {
       return {
         props: {
-          data: null,
+          notFound: true,
         },
       };
     } else {
@@ -327,7 +326,7 @@ export async function getServerSideProps({ params }) {
 
   return {
     props: {
-      data: null,
+      notFound: true,
     },
   };
 }

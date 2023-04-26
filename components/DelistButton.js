@@ -11,6 +11,7 @@ import {
 import marketplaceAbi from "../contracts/abi/marketplace.json";
 
 export function DelistButton({ listingid }) {
+  const router = useRouter();
   const marketplaceAdd = "0x402a478f22da7d85006ab6ce9edff896a4905d00";
 
   const marketplaceConfig = {
@@ -40,6 +41,10 @@ export function DelistButton({ listingid }) {
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
   });
+
+  if (isSuccess) {
+    router.reload();
+  }
 
   return (
     <>

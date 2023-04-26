@@ -20,11 +20,12 @@ export default function Ticket({ data, transfer }) {
   const [hasMounted, setHasMounted] = useState(false);
   const contractAddress = "0x52cf0f17db253195d1deda70b31c1485b6ee28b1";
   const marketplaceAdd = "0x402a478f22DA7D85006Ab6cE9eDfF896A4905D00";
-  // console.log(data);
+  console.log(data);
+
   const metadata = data;
   const gweiToEth = 1000000000000000000;
-  const trans = transfer.result;
-  // console.log(transfer);
+  const trans = transfer?.result;
+  console.log(transfer);
 
   var imgSrc,
     imgLink,
@@ -47,25 +48,23 @@ export default function Ticket({ data, transfer }) {
   counter = parseInt(counter);
 
   var i = 0,
-    hexNum,
     listingId;
 
   // // console.log(listed);
 
   while (i < counter) {
-    hexNum = i.toString(16);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { data: listed } = useContractRead({
       ...marketConfig,
       functionName: "getListing",
-      args: [hexNum],
+      args: [i],
     });
 
-    // console.log(listed);
+    console.log(listed);
 
     if (
       listed &&
-      listed[0] == "0x52cf0f17db253195d1deda70b31c1485b6ee28b1" &&
+      listed[0] == "0x52Cf0f17dB253195d1DEDA70b31c1485B6Ee28B1" &&
       parseInt(listed[1]) == id
     ) {
       listingId = i;
@@ -108,6 +107,8 @@ export default function Ticket({ data, transfer }) {
   if (!hasMounted) return null;
 
   if (!metadata) {
+    router.reload();
+
     return (
       <div className="font-sans bg-slate-50 min-h-screen min-w-screen text-black ">
         <Nav />
@@ -182,7 +183,7 @@ export default function Ticket({ data, transfer }) {
               </div>
               <div className="rounded-md border-slate-200 border-2 shadow-md p-4 flex flex-col gap-3">
                 <div className="text-lg font-bold">Ticket Detail</div>
-                <div className="flex flex-row justify-between">
+                <div className="flex flex-col sm:flex-row justify-between">
                   <div>Contract Address: </div>
                   <div>
                     <a
@@ -292,7 +293,7 @@ export async function getServerSideProps({ params }) {
 
     // Print NFT metadata returned in the response:
     let response = await alchemy.nft.getNftMetadata(contract, params.id);
-    // console.log(response);
+    console.log(response);
 
     const res = await fetch(
       `https://nf-tix.vercel.app/api/transfer/jbvip/${params.id}`

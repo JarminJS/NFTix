@@ -140,9 +140,8 @@ export default function jb(data) {
                 <table className="text-md w-full bg-transparent bg-opacity-0">
                   <thead>
                     <tr className="ticket text-left">
-                      <th className="w-1/3">Ticket Type</th>
-                      <th className="w-1/3">Price</th>
-                      <th className="w-1/3">Amount</th>
+                      <th className="w-1/2">Ticket Type</th>
+                      <th className="w-1/2">Price</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -150,10 +149,6 @@ export default function jb(data) {
                       <tr key={ticket.type} className="ticket">
                         <td>{ticket.type}</td>
                         <td>{ticket.price} ETH</td>
-                        <td>
-                          {(ticket.type == "GA" && gaSupply) ||
-                            (ticket.type == "VIP" && vipSupply)}
-                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -163,16 +158,6 @@ export default function jb(data) {
               <Link href="/event/jb/mint">
                 <div className="w-full btn btn-primary">Buy Ticket</div>
               </Link>
-
-              {/* Will change to a button -> redirect to ticket minting page */}
-              {/* <div className="rounded-md border-slate-200 border-2 shadow-md p-4">
-                <div className="text-lg mb-2">
-                  Buy Ticket - Buy JBGA Ticket{" "}
-                </div>
-                <BuyPrimary
-                  contract={"0x3978398d6485c07bf0f4a95ef8e4678b747e56b6"}
-                />
-              </div> */}
             </div>
           </div>
           <div className="flex flex-col px-4 md:px-0 gap-8 mb-8 ">

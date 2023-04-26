@@ -9,6 +9,7 @@ import {
 import marketplaceAbi from "../contracts/abi/marketplace.json";
 
 export function BuySecondaryButton({ listingId, price }) {
+  const router = useRouter();
   const marketplaceAdd = "0x402a478f22da7d85006ab6ce9edff896a4905d00";
 
   const marketConfig = {
@@ -29,7 +30,7 @@ export function BuySecondaryButton({ listingId, price }) {
   } = usePrepareContractWrite({
     ...marketConfig,
     functionName: "buySecondary",
-    args: [listingId.toString(16)],
+    args: [listingId],
     overrides: {
       value: price,
     },
@@ -42,11 +43,15 @@ export function BuySecondaryButton({ listingId, price }) {
     hash: data?.hash,
   });
 
+  if (isSuccess) {
+    router.reload();
+  }
+
   return (
     <>
       <div>
         {isLoading ? (
-          <div className="btn-primary">Purchasing...</div>
+          <div className="btn-primary w-full">Purchasing...</div>
         ) : (
           <div className="flex flex-col gap-4 ">
             <div className="btn-primary" onClick={() => write()}>

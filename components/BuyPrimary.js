@@ -12,6 +12,7 @@ import abi from "../contracts/abi/testabi.json";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { configureChains, goerli } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
+import { useRouter } from "next/router";
 
 const { chains } = configureChains(
   [goerli],
@@ -19,6 +20,7 @@ const { chains } = configureChains(
 );
 
 export function BuyPrimary({ contract, price }) {
+  const router = useRouter();
   const [addressOwn, setAddressOwn] = useState();
   const { address, isConnected } = useAccount();
   const [hasMounted, setHasMounted] = useState();
@@ -37,24 +39,10 @@ export function BuyPrimary({ contract, price }) {
     ticketPrice = 0.1;
   }
 
-  // console.log(contract === "0x3978398d6485c07bf0f4a95ef8e4678b747e56b6");
-
   const contractConfig = {
     address: contract,
     abi: abi,
   };
-
-  // useEffect(() => {
-  //   // console.log(quantity);
-  //   // console.log(newPrice);
-  // }, [quantity, newPrice]);
-
-  // const { data: price } = useContractRead({
-  //   ...contractConfig,
-  //   functionName: "TICKET_PRICE",
-  // });
-
-  // const ticketPrice = parseFloat(price.toString() / gweiToEth).toFixed(2);
 
   const { data: limitPerPerson } = useContractRead({
     ...contractConfig,
@@ -76,7 +64,24 @@ export function BuyPrimary({ contract, price }) {
 
   const options = [];
 
-  for (var amount = 0; amount <= left; amount++) {
+  let { data: totalSupply } = useContractRead({
+    ...contractConfig,
+    functionName: "TOTAL_SUPPLY",
+  });
+
+  let { data: currentToken } = useContractRead({
+    ...contractConfig,
+    functionName: "currentTokenId",
+  });
+
+  totalSupply = Number(totalSupply);
+  currentToken = Number(currentToken);
+
+  for (
+    var amount = 0;
+    amount <= left && amount <= totalSupply - currentToken;
+    amount++
+  ) {
     options.push({ value: amount });
   }
 
@@ -105,12 +110,9 @@ export function BuyPrimary({ contract, price }) {
     connector: new MetaMaskConnector({ chains }),
   });
 
-  let { data: currentToken } = useContractRead({
-    ...contractConfig,
-    functionName: "currentTokenId",
-  });
-
-  currentToken = Number(currentToken);
+  if (isSuccess) {
+    router.reload();
+  }
 
   useEffect(() => {
     setHasMounted(true);
@@ -140,7 +142,7 @@ export function BuyPrimary({ contract, price }) {
     <>
       <div>
         {isLoading ? (
-          <div className="btn-primary" onClick={() => write()}>
+          <div className="btn-primary w-full" onClick={() => write()}>
             Purchasing...
           </div>
         ) : (
