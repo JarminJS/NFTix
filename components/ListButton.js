@@ -30,7 +30,7 @@ export function ListButton({ contract, tokenid }) {
 
   useEffect(() => {
     setHasMounted(true);
-  });
+  }, []);
 
   const contractConfig = {
     address: contract,

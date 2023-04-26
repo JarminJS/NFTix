@@ -30,7 +30,7 @@ export function ApproveButton({ contract, tokenid }) {
 
   useEffect(() => {
     setHasMounted(true);
-  });
+  }, []);
 
   const {
     config,

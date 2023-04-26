@@ -21,7 +21,7 @@ export function BuySecondaryButton({ listingId, price }) {
 
   useEffect(() => {
     setHasMounted(true);
-  });
+  }, []);
 
   const {
     config,

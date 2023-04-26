@@ -76,12 +76,11 @@ function marketplace({ price }) {
 
             <div className="w-full flex md:flex-row flex-col flex-wrap">
               {listing.map((item) => (
-                // eslint-disable-next-line react/jsx-key
-                <div className="md:w-1/3 w-full p-2">
-                  <div
-                    key={item.tokenContract && item.tokenId}
-                    className=" rounded-xl text-black bg-neutral-50 border-slate-200 border-2 shadow-md flex-col hover:border-blue-800 hover:scale-[1.01]"
-                  >
+                <div
+                  className="md:w-1/3 w-full p-2"
+                  key={item.tokenContract && item.tokenId}
+                >
+                  <div className=" rounded-xl text-black bg-neutral-50 border-slate-200 border-2 shadow-md flex-col hover:border-blue-800 hover:scale-[1.01]">
                     <Image
                       src={
                         (item.tokenContract ==
