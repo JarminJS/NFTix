@@ -121,8 +121,7 @@ export default function cas({ data }) {
                         {content.tag != "run" && "Ticket Type"}
                         {content.tag == "run" && "Category"}
                       </th>
-                      <th className="w-1/3">Price</th>
-                      <th className="w-1/3">Amount</th>
+                      <th className="w-1/2">Price</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -130,7 +129,6 @@ export default function cas({ data }) {
                       <tr key={ticket.type} className="ticket">
                         <td>{ticket.type}</td>
                         <td>{ticket.price} ETH</td>
-                        <td>{ticket.amount}</td>
                       </tr>
                     ))}
                   </tbody>
