@@ -85,7 +85,11 @@ export function BuyPrimary({ contract, price }) {
     options.push({ value: amount });
   }
 
-  let { config } = usePrepareContractWrite({
+  let {
+    config,
+    error: prepareError,
+    isError: isPrepareError,
+  } = usePrepareContractWrite({
     ...contractConfig,
     functionName: "buyPrimary",
     args: [address, quantity],
@@ -174,21 +178,36 @@ export function BuyPrimary({ contract, price }) {
                 </select>
               </label>
             </form>
-            <div className="btn-primary " onClick={() => write()}>
-              Buy {quantity} Ticket for {(quantity * ticketPrice).toFixed(2)}{" "}
-              ETH
-              {price ? (
-                <> ~ RM{(quantity * ticketPrice * price).toFixed(2)}</>
-              ) : (
-                <></>
-              )}
-            </div>
+            {isPrepareError || quantity == 0 ? (
+              <>
+                <div className="btn disabled">
+                  Buy {quantity} {quantity > 1 ? "Tickets" : "Ticket"}{" "}
+                  {(quantity * ticketPrice).toFixed(2)} ETH
+                  {price ? (
+                    <> ~ RM{(quantity * ticketPrice * price).toFixed(2)}</>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+                {isPrepareError && (
+                  <div className="alert alert-error">
+                    Error: {prepareError?.code}
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="btn-primary " onClick={() => write()}>
+                Buy {quantity} {quantity > 1 ? "Tickets" : "Ticket"}{" "}
+                {(quantity * ticketPrice).toFixed(2)} ETH
+                {price ? (
+                  <> ~ RM{(quantity * ticketPrice * price).toFixed(2)}</>
+                ) : (
+                  <></>
+                )}
+              </div>
+            )}
           </div>
         )}
-
-        {/* {(isPrepareError ) && (
-            <div>Error: {(prepareError)?.message}</div>
-          )} */}
       </div>
 
       {isSuccess && (

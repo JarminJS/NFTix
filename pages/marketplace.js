@@ -80,7 +80,7 @@ function marketplace({ price }) {
                   className="md:w-1/3 w-full p-2"
                   key={item.tokenContract && item.tokenId}
                 >
-                  <div className=" rounded-xl text-black bg-neutral-50 border-slate-200 border-2 shadow-md flex-col hover:border-blue-800 hover:scale-[1.01]">
+                  <div className=" rounded-xl text-black bg-neutral-50 border-slate-200 border-2 shadow-md flex-col">
                     <Image
                       src={
                         (item.tokenContract ==

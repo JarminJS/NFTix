@@ -52,17 +52,23 @@ export function BuySecondaryButton({ listingId, price }) {
       <div>
         {isLoading ? (
           <div className="btn-primary w-full">Purchasing...</div>
-        ) : (
+        ) : !isPrepareError ? (
           <div className="flex flex-col gap-4 ">
             <div className="btn-primary" onClick={() => write()}>
               Buy Ticket
             </div>
           </div>
+        ) : (
+          <div className="flex flex-col gap-4 ">
+            <div className="btn disabled">Buy Ticket</div>
+          </div>
         )}
-
-        {/* {(isPrepareError ) && (
-            <div>Error: {(prepareError)?.message}</div>
-          )} */}
+        {isPrepareError && (
+          <div className="alert alert-error shadow-lg w-full mt-2 truncate">
+            Error:{" "}
+            {prepareError.code == "INSUFFICIENT_FUNDS" && "Insufficient Funds"}
+          </div>
+        )}
       </div>
 
       {isSuccess && (

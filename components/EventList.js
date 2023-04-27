@@ -16,7 +16,7 @@ export default function EventList(data) {
               <Image
                 src={`/${event.slug}.jpeg`}
                 alt={"Presentation"}
-                className="rounded-t-lg w-full h-full shadow-md "
+                className="rounded-t-lg w-full h-full shadow-md layer z-0"
                 width={960}
                 height={600}
                 priority

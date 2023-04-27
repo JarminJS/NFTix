@@ -6,6 +6,7 @@ export default function Transaction({ transactions }) {
 
   var record = transactions.result;
 
+  console.log(record.length);
   const [items, setItems] = useState(record.slice(0, total));
 
   useEffect(() => {
@@ -83,11 +84,15 @@ export default function Transaction({ transactions }) {
           </tbody>
         </table>
       </div>
-      <div className=" flex justify-center mb-6">
-        <div className="btn btn-primary w-fit" onClick={loadMore}>
-          Load More
+      {total < record.length ? (
+        <div className=" flex justify-center mb-6">
+          <div className="btn btn-primary w-fit" onClick={loadMore}>
+            Load More
+          </div>
         </div>
-      </div>
+      ) : (
+        <></>
+      )}
     </>
   );
 }
