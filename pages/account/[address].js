@@ -78,12 +78,6 @@ export default function Account(data) {
                             <div>Token ID: </div>
                             <div>{parseInt(item.tokenId)}</div>
                           </div>
-                          <div className="flex flex-row justify-between truncate">
-                            <div>Owner: </div>
-                            <div>
-                              {address.slice(0, 6) + "..." + address.slice(-6)}
-                            </div>
-                          </div>
 
                           <div className="btn btn-primary">View</div>
                         </div>

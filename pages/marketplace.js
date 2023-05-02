@@ -97,13 +97,13 @@ function marketplace({ price }) {
                       priority
                     />
                     <div className="p-4 flex flex-col gap-2 text-sm">
-                      <div className="font-bold">
+                      <div className="font-bold text-lg">
                         {(item.tokenContract ==
                           "0x3978398d6485c07BF0f4A95Ef8E4678B747E56b6" &&
-                          "Justin Bieber Justice World Tour - Kuala Lumpur : General Admission") ||
+                          `Justin Bieber Justice World Tour - Kuala Lumpur : GA #${item.tokenId}`) ||
                           (item.tokenContract ==
                             "0x52Cf0f17dB253195d1DEDA70b31c1485B6Ee28B1" &&
-                            "Justin Bieber Justice World Tour - Kuala Lumpur : VIP")}
+                            `Justin Bieber Justice World Tour - Kuala Lumpur : VIP #${item.tokenId}`)}
                       </div>
                       <div className="flex flex-row gap-4 truncate items-center">
                         <div className="w-8 h-8 rounded-full bg-slate-300 flex-none"></div>
@@ -116,7 +116,7 @@ function marketplace({ price }) {
                             item.creator.slice(-6)}
                         </Link>
                       </div>
-                      <div className="flex flex-row justify-between">
+                      <div className="flex flex-row gap-2">
                         <div>Token ID: </div>
                         <div>{parseInt(item.tokenId)}</div>
                       </div>

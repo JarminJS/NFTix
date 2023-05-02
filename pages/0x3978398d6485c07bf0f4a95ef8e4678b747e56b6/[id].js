@@ -87,6 +87,13 @@ export default function Ticket({ data, transfer }) {
     args: [id],
   });
 
+  const { data: currentId } = useContractRead({
+    ...contractConfig,
+    functionName: "currentTokenId",
+  });
+
+  var curr = Number(currentId);
+
   // console.log(approved);
 
   const { data: ticketPrice } = useContractRead({
@@ -106,14 +113,30 @@ export default function Ticket({ data, transfer }) {
 
   if (!hasMounted) return null;
 
-  if (!metadata) {
+  if (id > curr) {
+    return (
+      <>
+        <Head>
+          <title>Ticket Not Found</title>
+        </Head>
+        <div className="font-sans bg-slate-50 min-h-screen min-w-screen text-black ">
+          <Nav />
+          <div className="h-[90vh] w-full grid place-content-center ">
+            <div className="w-full text-2xl">Ticket Not Found</div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  if (id < curr && !metadata) {
     router.reload();
 
     return (
       <div className="font-sans bg-slate-50 min-h-screen min-w-screen text-black ">
         <Nav />
         <div className="h-[90vh] w-full grid place-content-center ">
-          <div className="w-full text-2xl">Ticket Not Found</div>
+          <div className="w-full text-2xl">Loading</div>
         </div>
       </div>
     );

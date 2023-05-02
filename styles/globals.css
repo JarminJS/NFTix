@@ -10,11 +10,11 @@
   @apply btn border-none text-white bg-gradient-to-r from-blue-800 to-indigo-900 shadow-md hover:scale-[1.01];
 }
 .nav-item {
-  @apply btn bg-transparent border-none text-lg text-white hover:bg-opacity-20 font-normal lg:text-center justify-start;
+  @apply btn bg-transparent border-none text-lg font-semibold text-white hover:bg-white hover:text-blue-900  lg:text-center justify-start;
 }
 
 .nav-item-end {
-  @apply bg-white border-none hover:bg-white hover:bg-opacity-80 text-indigo-900 rounded-full;
+  @apply bg-white border-transparent border-2 hover:bg-white hover:bg-transparent hover:border-white  hover:text-white text-indigo-900 rounded-full;
 }
 
 tr,
