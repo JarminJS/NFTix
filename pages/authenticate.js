@@ -11,7 +11,7 @@ import Moralis from "moralis";
 
 export default function Authenticate() {
   const [ticket, setTicket] = useState(0);
-  const [tokenId, setTokenId] = useState(0);
+  const [tokenId, setTokenId] = useState(1);
   const [response, setResponse] = useState();
   const [owner, setOwner] = useState();
 

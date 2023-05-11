@@ -20,12 +20,11 @@ export default function Ticket({ data, transfer }) {
   const [hasMounted, setHasMounted] = useState(false);
   const contractAddress = "0x52cf0f17db253195d1deda70b31c1485b6ee28b1";
   const marketplaceAdd = "0x402a478f22DA7D85006Ab6cE9eDfF896A4905D00";
-  console.log(data);
-
+  // console.log(data);
   const metadata = data;
   const gweiToEth = 1000000000000000000;
   const trans = transfer?.result;
-  console.log(transfer);
+  // console.log(transfer);
 
   var imgSrc,
     imgLink,
@@ -60,7 +59,7 @@ export default function Ticket({ data, transfer }) {
       args: [i],
     });
 
-    console.log(listed);
+    // console.log(listed);
 
     if (
       listed &&
@@ -114,12 +113,17 @@ export default function Ticket({ data, transfer }) {
 
   if (id > curr) {
     return (
-      <div className="font-sans bg-slate-50 min-h-screen min-w-screen text-black ">
-        <Nav />
-        <div className="h-[90vh] w-full grid place-content-center ">
-          <div className="w-full text-2xl">Ticket Not Found</div>
+      <>
+        <Head>
+          <title>Ticket Not Found</title>
+        </Head>
+        <div className="font-sans bg-slate-50 min-h-screen min-w-screen text-black ">
+          <Nav />
+          <div className="h-[90vh] w-full grid place-content-center ">
+            <div className="w-full text-2xl">Ticket Not Found</div>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -293,9 +297,6 @@ export default function Ticket({ data, transfer }) {
     </>
   );
 }
-
-// get owner
-// get past transactions
 
 export async function getServerSideProps({ params }) {
   try {

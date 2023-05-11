@@ -62,6 +62,8 @@ export function BuyPrimary({ contract, price }) {
 
   var left = limitPerPerson?.toString() - (owned ? owned?.toString() : 0);
 
+  if (left < 0) left = 0;
+
   const options = [];
 
   let { data: totalSupply } = useContractRead({
@@ -124,13 +126,15 @@ export function BuyPrimary({ contract, price }) {
 
   if (!isConnected) {
     return (
-      <div
-        className="w-full rounded-xl btn bg-slate-200 border-none hover:bg-slate-300 text-black"
-        onClick={connect}
-      >
-        {" "}
-        Not Connected{" "}
-      </div>
+      <>
+        <div
+          className="w-full rounded-xl btn bg-slate-200 border-none hover:bg-slate-300 text-black"
+          onClick={connect}
+        >
+          {" "}
+          Not Connected{" "}
+        </div>
+      </>
     );
   }
 
