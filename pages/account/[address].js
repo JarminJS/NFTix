@@ -86,7 +86,7 @@ export default function Account(data) {
                   </div>
                 ))}
               </div>
-              <div className="w-screen sm:w-auto overflow-x-auto">
+              <div className="w-screen sm:w-auto overflow-x-auto pb-8">
                 <Transaction transactions={transactions} />
               </div>
             </>

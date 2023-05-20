@@ -10,7 +10,7 @@
   @apply btn border-none text-white bg-gradient-to-r from-blue-800 to-indigo-900 shadow-md hover:scale-[1.01];
 }
 .nav-item {
-  @apply btn bg-transparent border-none text-lg font-semibold text-white hover:bg-white hover:text-blue-900  lg:text-center justify-start;
+  @apply btn bg-transparent border-none text-lg font-semibold text-white hover:bg-white hover:text-blue-900  lg:text-center justify-start py-0;
 }
 
 .nav-item-end {

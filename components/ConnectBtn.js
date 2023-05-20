@@ -72,7 +72,7 @@ export function Profile() {
             <li>
               <Link href={`/account/${address}`} className="flex gap-2">
                 <BsPerson />
-                Account
+                My Account
               </Link>
             </li>
             <div className="divider py-0 my-0"></div>

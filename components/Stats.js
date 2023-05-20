@@ -65,7 +65,7 @@ function Stats({ contract }) {
       <table className="w-full border-none">
         <tbody>
           <tr>
-            <td className="min-w-1/3 max-w-1/2">Total Supply:</td>
+            <td className="w-1/3">Total Supply:</td>
             <td>{totalSupply?.toString()}</td>
           </tr>
           {/* <tr>
@@ -73,7 +73,7 @@ function Stats({ contract }) {
             <td>{supply?.toString()}</td>
           </tr> */}
           <tr>
-            <td className="">Ticket Left:</td>
+            <td className="">Tickets Left:</td>
             <td>{left}</td>
           </tr>
           <tr>

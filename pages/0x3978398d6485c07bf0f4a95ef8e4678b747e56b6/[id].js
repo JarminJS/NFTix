@@ -47,7 +47,6 @@ export default function Ticket({ data, transfer }) {
   counter = parseInt(counter);
 
   var i = 0,
-    hexNum,
     listingId;
 
   // // console.log(listed);
@@ -93,7 +92,6 @@ export default function Ticket({ data, transfer }) {
   });
 
   var curr = Number(currentId);
-
   // console.log(approved);
 
   const { data: ticketPrice } = useContractRead({
@@ -210,7 +208,9 @@ export default function Ticket({ data, transfer }) {
                   <div>Contract Address: </div>
                   <div>
                     <a
-                      href={`https://goerli.etherscan.io/address/${contractAddress}}`}
+                      target={"_blank"}
+                      rel="noreferrer"
+                      href={`https://goerli.etherscan.io/address/${contractAddress}`}
                       className="truncate"
                     >
                       {contractAddress.slice(0, 8) +
@@ -226,75 +226,80 @@ export default function Ticket({ data, transfer }) {
               </div>
             </div>
           </div>
-          <div className="rounded-md border-slate-200 border-2 shadow-md p-4 gap-3 flex flex-col overflow-x-auto mx-4 md:m-0 order-5">
-            <div className="text-lg font-bold">Ticket Activity</div>
-            <table className="w-full">
-              <thead>
-                <tr className="text-left ">
-                  <th className="w-fit">Event</th>
-                  <th className="">Transaction</th>
-                  <th className="">From</th>
-                  <th className="">To</th>
-                  <th className="">Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                {trans.map((log) => (
-                  <tr
-                    key={log.transaction_hash}
-                    className="hover:bg-slate-50 truncate"
-                  >
-                    <td className="">
-                      {log.from_address ==
-                        "0x0000000000000000000000000000000000000000" &&
-                        "Buy Primary"}
-                      {log.to_address ==
-                        "0x0000000000000000000000000000000000000000" && "Burn"}
-                      {log.from_address !=
-                        "0x0000000000000000000000000000000000000000" &&
-                        log.value / gweiToEth > 0 &&
-                        "Buy Secondary"}
-                      {log.to_address !=
-                        "0x0000000000000000000000000000000000000000" &&
-                        log.value / gweiToEth == 0 &&
-                        "Transfer"}
-                    </td>
-                    <td className="">
-                      <Link
-                        className="underline hover:text-blue-900"
-                        href={`https://goerli.etherscan.io/tx/${log.transaction_hash}`}
-                      >
-                        {log.transaction_hash.slice(0, 6) +
-                          "..." +
-                          log.transaction_hash.slice(-4)}
-                      </Link>
-                    </td>
-                    <td className="">
-                      <Link
-                        href={`account/${log.from_address}`}
-                        className="hover:underline"
-                      >
-                        {log.from_address.slice(0, 4) +
-                          "..." +
-                          log.from_address.slice(-4)}{" "}
-                      </Link>
-                    </td>
-                    <td className="">
-                      <Link
-                        href={`account/${log.to_address}`}
-                        className="hover:underline"
-                      >
-                        {log.to_address.slice(0, 4) +
-                          "..." +
-                          log.to_address.slice(-4)}
-                      </Link>
-                    </td>
-                    <td className="">{log.value / gweiToEth} ETH</td>
+          {trans && (
+            <div className="rounded-md border-slate-200 border-2 shadow-md p-4 gap-3 flex flex-col overflow-x-auto mx-4 md:m-0 order-5">
+              <div className="text-lg font-bold">Ticket Activity</div>
+              <table className="w-full">
+                <thead>
+                  <tr className="text-left ">
+                    <th className="w-fit">Event</th>
+                    <th className="">Transaction</th>
+                    <th className="">From</th>
+                    <th className="">To</th>
+                    <th className="">Value</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {trans.map((log) => (
+                    <tr
+                      key={log.transaction_hash}
+                      className="hover:bg-slate-50 truncate"
+                    >
+                      <td className="">
+                        {log.from_address ==
+                          "0x0000000000000000000000000000000000000000" &&
+                          "Buy Primary"}
+                        {log.to_address ==
+                          "0x0000000000000000000000000000000000000000" &&
+                          "Burn"}
+                        {log.from_address !=
+                          "0x0000000000000000000000000000000000000000" &&
+                          log.value / gweiToEth > 0 &&
+                          "Buy Secondary"}
+                        {log.to_address !=
+                          "0x0000000000000000000000000000000000000000" &&
+                          log.value / gweiToEth == 0 &&
+                          "Transfer"}
+                      </td>
+                      <td className="">
+                        <Link
+                          className="underline hover:text-blue-900"
+                          href={`https://goerli.etherscan.io/tx/${log.transaction_hash}`}
+                          target={"_blank"}
+                          rel="noreferrer"
+                        >
+                          {log.transaction_hash.slice(0, 6) +
+                            "..." +
+                            log.transaction_hash.slice(-4)}
+                        </Link>
+                      </td>
+                      <td className="">
+                        <Link
+                          href={`account/${log.from_address}`}
+                          className="hover:underline"
+                        >
+                          {log.from_address.slice(0, 4) +
+                            "..." +
+                            log.from_address.slice(-4)}{" "}
+                        </Link>
+                      </td>
+                      <td className="">
+                        <Link
+                          href={`account/${log.to_address}`}
+                          className="hover:underline"
+                        >
+                          {log.to_address.slice(0, 4) +
+                            "..." +
+                            log.to_address.slice(-4)}
+                        </Link>
+                      </td>
+                      <td className="">{log.value / gweiToEth} ETH</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </div>
     </>

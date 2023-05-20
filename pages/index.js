@@ -63,7 +63,7 @@ export default function Home({ isDbConnected, data }) {
       featured.push(data[i]);
     }
 
-    if (data[i].tag == "expo") {
+    if (data[i].tag == "exhibition") {
       expo.push(data[i]);
     } else if (data[i].tag == "concert") {
       concert.push(data[i]);

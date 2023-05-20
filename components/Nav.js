@@ -50,7 +50,7 @@ function Nav() {
           </ul>
         </div>
         <Link
-          className="btn btn-ghost normal-case text-xl text-neutral-50"
+          className="btn btn-ghost normal-case text-xl text-neutral-50 hover:bg-white hover:text-blue-900 font-bold"
           href="/"
         >
           NFTix

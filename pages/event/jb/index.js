@@ -118,19 +118,21 @@ export default function jb(data) {
             </div>
             <div className="xl:w-1/2 w-full flex flex-col gap-6">
               <div className="text-2xl font-bold">{content.name}</div>
-              <div className="rounded-md border-slate-200 border-2 shadow-md p-4 bg-neutral-50">
-                <div className="text-lg">Event Detail</div>
 
-                <table className="w-full border-none">
-                  <tr className="">
+              <div className="rounded-md border-slate-200 border-2 shadow-md p-4 bg-neutral-50 ">
+                <table className="w-full border-none border-y-2 border-slate-200 text-md">
+                  <th className="p-0" colSpan={2}>
+                    <td className="text-left">Event Detail</td>
+                  </th>
+                  <tr className="align-top">
                     <td className="w-fit ">Venue: </td>
                     <td className>
-                      <div className=" text-clip overflow-hidden">
+                      <div className="text-clip overflow-hidden">
                         {content.venue}
                       </div>
                     </td>
                   </tr>
-                  <tr>
+                  <tr className="align-top">
                     <td>Date: </td>
                     <td>{date}</td>
                   </tr>

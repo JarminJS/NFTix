@@ -50,7 +50,7 @@ export function DelistButton({ listingid }) {
     <>
       <div>
         {isLoading ? (
-          <div className="btn-primary">Removing...</div>
+          <div className="btn-primary w-full">Removing...</div>
         ) : (
           <div className="flex flex-col gap-4 w-full">
             <div className="btn-primary" onClick={() => write()}>

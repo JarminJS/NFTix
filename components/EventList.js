@@ -22,7 +22,7 @@ export default function EventList(data) {
                 priority
               />
               <div className="mx-2 sm:mx-3 mt-2 sm:w-10/12 min-w-0 flex flex-col gap-y-2 ">
-                <div className="badge badge-primary rounded-md badge-sm p-2">
+                <div className="badge badge-primary rounded-md badge-sm px-2 py-0 my-auto ">
                   {event.tag}
                 </div>
 
