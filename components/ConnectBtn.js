@@ -55,9 +55,10 @@ export function Profile() {
         <div className="dropdown dropdown-end">
           <label
             tabIndex={0}
-            className="btn btn-ghost btn-circle avatar bg-white active:bg-white hover:bg-slate-300"
+            className="btn nav-item-end gap-2 w-full hover:text-white"
           >
-            <BsPerson className="text-indigo-900" />
+            <BsPerson />
+            <div className="hidden md:flex">Account</div>
           </label>
           <ul
             tabIndex={0}
