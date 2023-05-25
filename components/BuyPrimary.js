@@ -109,8 +109,6 @@ export function BuyPrimary({ contract, price }) {
     hash: data?.hash,
   });
 
-  //
-
   const { connect } = useConnect({
     chainId: 5,
     connector: new MetaMaskConnector({ chains }),
@@ -135,6 +133,14 @@ export function BuyPrimary({ contract, price }) {
           Not Connected{" "}
         </div>
       </>
+    );
+  }
+
+  if (options.length === 1 && left !== 0) {
+    return (
+      <div className="btn w-full rounded-xl text-black btn-disabled">
+        Sold Out
+      </div>
     );
   }
 
@@ -182,32 +188,30 @@ export function BuyPrimary({ contract, price }) {
                 </select>
               </label>
             </form>
+            <div className="w-full flex flex-row gap-2">
+              <div>Price: </div>
+              <div className="font-semibold">
+                {(quantity * ticketPrice).toFixed(2)} ETH ~ RM
+                {(quantity * ticketPrice * price).toFixed(2)}
+              </div>
+            </div>
             {isPrepareError || quantity == 0 ? (
               <>
                 <div className="btn disabled">
-                  Buy {quantity} {quantity > 1 ? "Tickets" : "Ticket"}{" "}
-                  {(quantity * ticketPrice).toFixed(2)} ETH
-                  {price ? (
-                    <> ~ RM{(quantity * ticketPrice * price).toFixed(2)}</>
-                  ) : (
-                    <></>
-                  )}
+                  Buy {quantity > 1 ? "Tickets" : "Ticket"}{" "}
                 </div>
                 {isPrepareError && (
                   <div className="alert alert-error">
-                    Error: {prepareError?.code}
+                    Error:{" "}
+                    {prepareError?.code === "INSUFFICIENT_FUNDS"
+                      ? "Insufficient Funds"
+                      : prepareError.code}
                   </div>
                 )}
               </>
             ) : (
               <div className="btn-primary " onClick={() => write()}>
-                Buy {quantity} {quantity > 1 ? "Tickets" : "Ticket"}{" "}
-                {(quantity * ticketPrice).toFixed(2)} ETH
-                {price ? (
-                  <> ~ RM{(quantity * ticketPrice * price).toFixed(2)}</>
-                ) : (
-                  <></>
-                )}
+                Buy {quantity > 1 ? "Tickets" : "Ticket"}{" "}
               </div>
             )}
           </div>
@@ -274,7 +278,12 @@ export function BuyPrimary({ contract, price }) {
                 d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <span>Error: {error?.message}</span>
+            <span>
+              Error:{" "}
+              {error?.message === "User rejected request"
+                ? "Transaction Rejected"
+                : error.message}
+            </span>
           </div>
         </div>
       )}

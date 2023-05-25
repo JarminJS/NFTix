@@ -132,7 +132,7 @@ export default function Authenticate() {
                       className="hover:underline truncate"
                     >
                       {owner ? (
-                        owner.slice(0, 8) + "..." + owner.slice(-8)
+                        owner.slice(0, 6) + "..." + owner.slice(-6)
                       ) : (
                         <>Loading...</>
                       )}

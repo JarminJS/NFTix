@@ -61,8 +61,12 @@ function Stats({ contract }) {
 
   return (
     <div className="w-full text-black rounded-md border-slate-200 border-2 p-4 shadow-md bg-slate-50">
-      <div className="font-bold text-lg">{symbol} Ticket Statistics </div>
       <table className="w-full border-none">
+        <thead>
+          <tr>
+            <th colSpan={2}>{symbol} Ticket Statistics </th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
             <td className="w-1/3">Total Supply:</td>

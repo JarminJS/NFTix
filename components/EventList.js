@@ -16,7 +16,7 @@ export default function EventList(data) {
               <Image
                 src={`/${event.slug}.jpeg`}
                 alt={"Presentation"}
-                className="rounded-t-lg w-full h-full shadow-md layer z-0"
+                className="rounded-t-xl w-full h-full shadow-md layer"
                 width={960}
                 height={600}
                 priority
@@ -26,7 +26,7 @@ export default function EventList(data) {
                   {event.tag}
                 </div>
 
-                <div className="font-bold sm:text-lg line-clamp-1">
+                <div className="font-bold text-lg line-clamp-1">
                   {event.name}
                 </div>
 

@@ -32,7 +32,7 @@ td {
 }
 
 .main {
-  @apply text-base line-clamp-1;
+  @apply text-base font-semibold line-clamp-1;
 }
 
 .main-container {

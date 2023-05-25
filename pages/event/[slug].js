@@ -95,8 +95,8 @@ export default function cas({ data }) {
         <Nav />
 
         <div className=" flex flex-col md:w-2/3 mx-auto gap-6 mt-8 ">
-          <div className="flex md:flex-row flex-col px-4 md:px-0 items-start rounded-lg gap-8">
-            <div className="lg:w-1/2 w-full gap-6 flex flex-col">
+          <div className="flex xl:flex-row flex-col px-4 md:px-0 items-start rounded-lg gap-8">
+            <div className="w-full gap-6 flex flex-col">
               <Image
                 src={`/${content.slug}.jpeg`}
                 alt={"Presentation"}
@@ -105,27 +105,37 @@ export default function cas({ data }) {
                 width={2000}
               />
             </div>
-            <div className="lg:w-1/2 w-full flex flex-col gap-6">
+            <div className="w-full flex flex-col gap-6">
               <div className="text-2xl font-bold">{content.name}</div>
               <div className="rounded-lg border-slate-200 border-2 shadow-md p-4 bg-slate-50">
-                <div className="text-lg">Event Detail</div>
-                <div className="">Date: {date}</div>
-                <div className="">Venue: {content.venue}</div>
+                <table className="w-full border-none border-y-2 border-slate-200 text-md">
+                  <th className="p-0" colSpan={2}>
+                    <td className="text-left">Event Detail</td>
+                  </th>
+                  <tr className="align-top">
+                    <td className="w-fit ">Venue: </td>
+                    <td className>
+                      <div className="text-clip overflow-hidden font-medium">
+                        {content.venue}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr className="align-top">
+                    <td>Date: </td>
+                    <td className="font-medium">{date}</td>
+                  </tr>
+                </table>
               </div>
               <div className="w-full rounded-lg text-black bg-slate-50 border-slate-200 border-2 shadow-md p-4">
-                <div className="text-lg">Ticket Details</div>
-                <table className="text-md w-full bg-transparent bg-opacity-0 p-6 mt-2">
+                <table className="text-md w-full bg-transparent bg-opacity-0">
                   <thead>
                     <tr className="ticket text-left">
-                      <th className="w-1/3">
-                        {content.tag != "run" && "Ticket Type"}
-                        {content.tag == "run" && "Category"}
-                      </th>
+                      <th className="w-1/2">Ticket Type</th>
                       <th className="w-1/2">Price</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {tickets?.map((ticket) => (
+                    {tickets.map((ticket) => (
                       <tr key={ticket.type} className="ticket">
                         <td>{ticket.type}</td>
                         <td>{ticket.price} ETH</td>
@@ -139,50 +149,98 @@ export default function cas({ data }) {
           <div className="flex flex-col px-4 md:px-0 gap-8 mb-4">
             <div className="w-full border-2 bg-slate-50 border-slate-200 shadow-md p-4 rounded-lg">
               {content.description && (
-                <>
-                  <div className="text-lg">Description</div>
-                  <div className="text-md">{content.description}</div>
-                </>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{content.description}</td>
+                    </tr>
+                  </tbody>
+                </table>
               )}
 
               {info && (
                 <div>
-                  <div className="text-lg">Entitlement</div>
-                  <div className="flex sm:flex-row flex-col">
-                    {info.map((x) => (
-                      <div key={x.type} className="flex flex-col sm:w-1/2">
-                        <div className="font-bold">{x.type}</div>
-                        <ol className="list-decimal list-outside pl-4">
-                          {x.entitlement.map((i) => (
-                            <li key={i}>{i}</li>
-                          ))}
-                        </ol>
-                      </div>
-                    ))}
-                  </div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Entitlement</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div className="flex sm:flex-row flex-col gap-2">
+                            {info.map((x) => (
+                              <div
+                                key={x.type}
+                                className="flex flex-col sm:w-1/2 "
+                              >
+                                <div className="font-bold">{x.type}</div>
+                                <ol className="list-decimal list-outside pl-4">
+                                  {x.entitlement.map((i) => (
+                                    <li key={i}>{i}</li>
+                                  ))}
+                                </ol>
+                              </div>
+                            ))}
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               )}
 
               {content.entitlement && (
                 <div>
-                  <div className="text-lg">Entitlement</div>
-
-                  <ol className="list-decimal list-outside pl-4">
-                    {content.entitlement.map((i) => (
-                      <li key={i}>{i}</li>
-                    ))}
-                  </ol>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Entitlement</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div className="flex sm:flex-row flex-col gap-2">
+                            <ol className="list-decimal list-outside pl-4">
+                              {content.entitlement.map((i) => (
+                                <li key={i}>{i}</li>
+                              ))}
+                            </ol>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               )}
             </div>
             {tnc && (
               <div className="w-full border-2 bg-slate-50 border-slate-200 shadow-md p-4 rounded-lg">
-                <div className="text-lg">Terms and Condition</div>
-                <ol className="list-decimal list-outside pl-8">
-                  {tnc?.map((x) => (
-                    <li key={x}>{x}</li>
-                  ))}
-                </ol>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Terms and Condition</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <ol className="list-decimal list-outside pl-8">
+                          {tnc.map((x) => (
+                            <li key={x}>{x}</li>
+                          ))}
+                        </ol>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             )}
           </div>

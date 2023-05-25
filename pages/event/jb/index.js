@@ -111,8 +111,8 @@ export default function jb(data) {
                 src={`/${content.slug}.jpeg`}
                 alt={"Presentation"}
                 className="rounded-lg w-auto h-auto shadow-md "
-                width={1000}
-                height={1600}
+                width={2000}
+                height={2000}
                 priority
               />
             </div>
@@ -164,16 +164,38 @@ export default function jb(data) {
           </div>
           <div className="flex flex-col px-4 md:px-0 gap-8 mb-8 ">
             <div className="w-full border-2 border-slate-200 shadow-md p-4 rounded-md bg-neutral-50">
-              <div className="text-lg">Description</div>
-              <div className="text-md">{content.description}</div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{content.description}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div className="w-full border-2 border-slate-200 shadow-md p-4 rounded-md bg-neutral-50">
-              <div className="text-lg">Terms and Condition</div>
-              <ol className="list-decimal list-outside pl-8">
-                {tnc.map((x) => (
-                  <li key={x}>{x}</li>
-                ))}
-              </ol>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Terms and Condition</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <ol className="list-decimal list-outside pl-8">
+                        {tnc.map((x) => (
+                          <li key={x}>{x}</li>
+                        ))}
+                      </ol>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

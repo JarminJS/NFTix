@@ -74,12 +74,12 @@ export default function Account(data) {
                           <div className="font-bold line-clamp-2">
                             {item.title}
                           </div>
-                          <div className="flex flex-row justify-between">
+                          <div className="flex flex-row gap-2">
                             <div>Token ID: </div>
                             <div>{parseInt(item.tokenId)}</div>
                           </div>
 
-                          <div className="btn btn-primary">View</div>
+                          <div className="btn btn-primary">View Ticket</div>
                         </div>
                       </Link>
                     </div>

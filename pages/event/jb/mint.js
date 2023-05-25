@@ -97,8 +97,12 @@ export default function Mint({ data, price }) {
             <div className="xl:w-1/2 w-full flex flex-col gap-6">
               <div className="text-2xl font-bold">{content.name}</div>
               <div className="w-full rounded-md text-black bg-slate-50 border-slate-200 border-2 shadow-md p-4">
-                <div className="font-bold">Event Details</div>
                 <table className="w-full border-none">
+                  <thead>
+                    <tr>
+                      <th>Event Details</th>
+                    </tr>
+                  </thead>
                   <tbody>
                     <tr>
                       <td className="w-fit ">Venue: </td>
