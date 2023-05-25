@@ -84,7 +84,13 @@ export default function cas({ data }) {
   const rawdate = new Date(content.date);
   const date = `${rawdate.getDate()} ${
     month[rawdate.getMonth()]
-  } ${rawdate.getFullYear()},  ${rawdate.toLocaleTimeString()}`;
+  } ${rawdate.getFullYear()},  ${rawdate.toLocaleTimeString(
+    navigator.language,
+    {
+      hour: "2-digit",
+      minute: "2-digit",
+    }
+  )}`;
 
   return (
     <>
