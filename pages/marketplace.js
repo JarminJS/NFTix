@@ -77,7 +77,7 @@ function marketplace({ price }) {
             <div className="w-full flex md:flex-row flex-col flex-wrap">
               {listing.map((item) => (
                 <div
-                  className="md:w-1/3 w-full p-2"
+                  className="md:w-1/2 lg:w-1/3 w-full p-2"
                   key={item.tokenContract && item.tokenId}
                 >
                   <div className=" rounded-xl text-black bg-neutral-50 border-slate-200 border-2 shadow-md flex-col">
@@ -120,15 +120,13 @@ function marketplace({ price }) {
                         <div>Token ID: </div>
                         <div>{parseInt(item.tokenId)}</div>
                       </div>
-                      <div className="flex flex-row gap-2 items-center">
-                        <div>Price: </div>
-                        <div className="font-semibold ">
-                          {parseInt(item.askPrice) / gweiToEth} ETH ~ RM
-                          {(
-                            (parseInt(item.askPrice) / gweiToEth) *
-                            price
-                          ).toFixed(2)}
-                        </div>
+
+                      <div className="font-semibold">
+                        {parseInt(item.askPrice) / gweiToEth} ETH ~ RM
+                        {(
+                          (parseInt(item.askPrice) / gweiToEth) *
+                          price
+                        ).toFixed(2)}
                       </div>
 
                       <Link

@@ -20,7 +20,7 @@ export default function Account(data) {
   // console.log(transactions);
   // console.log(data.data);
 
-  const jbga = 0x3978398d6485c07bf0f4a95ef8e4678b747e56b6;
+  // const jbga = 0x3978398d6485c07bf0f4a95ef8e4678b747e56b6;
   // const jbvip = ;
 
   return (

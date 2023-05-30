@@ -100,7 +100,7 @@ export default function Mint({ data, price }) {
                 <table className="w-full border-none">
                   <thead>
                     <tr>
-                      <th>Event Details</th>
+                      <th colSpan={2}>Event Details</th>
                     </tr>
                   </thead>
                   <tbody>
